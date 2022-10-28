@@ -18,6 +18,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +34,8 @@ public class Member {
 	private String street;
 	private String drivingLicense;
 	private Double wallet;
-	private Integer role;
+	private String role;
+	private boolean enabled = false;
 	
 	@OneToMany(mappedBy = "member")
 	private List<Booking> bookings;

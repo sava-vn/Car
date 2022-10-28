@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500"/>
+    <link rel="stylesheet" href="/assets/boostrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="/assets/css/form-element.css"/>
+    <link rel="stylesheet" href="/assets/css/style.css"/>
+
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="d-flex justify-content-center">
+    <!--Sign up button-->
+    <div class="text-center">
+        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#signupPage">Sign up</a>
+    </div>
+</div>
+<!--Sign up content-->
+<div class="modal fade" id="signupPage">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">NOT A MEMBER YET?</h3>
+            </div>
+            <div class="modal-body">
+                <div class="col-sm-12">
+                    <div class="form-bottom">
+                        <form role="form" action="#" th:action="@{/signup}" method="post" class="registration-form" id="signUpForm">
+                            <div class="form-group">
+                                <label class="sr-only">Name</label>
+                                <input type="text" name="fullName" placeholder="Your name"
+                                       class="form-name form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only">Email</label>
+                                <input type="email" name="email" placeholder="Your email"
+                                       class="form-email form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only">Phone Number</label>
+                                <input type="text" name="phone" placeholder="Your phone number"
+                                       class="form-phone form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only">Password</label>
+                                <input type="password" name="password" placeholder="Enter your password"
+                                       class="form-password form-control" id="password"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only">Confirm password</label>
+                                <input type="password" name="repassword" placeholder="Confirm password"
+                                       class="form-password form-control"/>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="form2Example31"/>
+                                <label class="form-check-label" for="form2Example31">
+                                    I want to rent a car
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="form2Example32"/>
+                                <label class="form-check-label" for="form2Example32">
+                                    I am a car owner
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="form2Example33"/>
+                                <label class="form-check-label" for="form2Example33">
+                                    I have read and agree with the
+                                </label>
+                                <a style="text-decoration: underline;" href="#">Terms and Conditions</a>
+                            </div>
+                            <button type="submit" class="btn">Sign up</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Javascript -->
+<script src="/assets/js/jquery-1.11.1.min.js"></script>
+<script src="/assets/boostrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
+        integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/assets/js/signup.js"></script>
+</body>
+</body>
+</html>
