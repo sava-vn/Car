@@ -1,6 +1,6 @@
 package vn.entities;
 
-import com.vn.entities.Booking;
+import com.vn.entitiess.Booking;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

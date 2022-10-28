@@ -1,6 +1,6 @@
-package vn.service;
+package com.vn.service;
 
-import com.vn.entitiess.Member;
+import com.vn.entities.Member;
 
 public interface MemberService {
     Integer save(Member member);

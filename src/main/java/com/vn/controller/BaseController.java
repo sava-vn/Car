@@ -1,4 +1,4 @@
-package vn.controller;
+package com.vn.controller;
 
 
 import com.vn.entitiess.Member;

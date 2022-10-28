@@ -1,6 +1,6 @@
-package vn.repository;
+package com.vn.repository;
 
-import com.vn.entitiess.Member;
+import com.vn.entities.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

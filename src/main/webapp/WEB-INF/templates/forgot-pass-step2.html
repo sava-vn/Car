@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reset password</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500" />
+    <link rel="stylesheet" href="/assets/boostrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/assets/css/form-element.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="grid row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <div class="form-box">
+            <div class="form-center">
+                <form role="form" action="/forgot-pass-step2" method="post" class="login-form" id="forgotPass">
+                    <div>
+                        <h2>Reset Password</h2>
+                        <h3>Please set your new password</h3>
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only">Password</label>
+                        <input type="password" name="password" placeholder="Enter a new password"
+                               class="form-password form-control" id="password">
+                    </div>
+                    <div class="form-group">
+                        <h6>Use at least one letter, one number and seven characters.</h6>
+                        <label class="sr-only">Confirm password</label>
+                        <input type="password" name="repassword" placeholder="Confirm password"
+                               class="form-repassword form-control">
+                    </div>
+                    <!--Button modal-->
+                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#submitModal">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Button content modal -->
+<div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="submitModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header"></div>
+            <div class="modal-body">
+                We will send an email with the attached link to reset your password. Please check it in your mailbox.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Javascript -->
+<script src="/assets/js/jquery-1.11.1.min.js"></script>
+<script src="/assets/boostrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
+        integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/assets/js/forgotpass.js"></script></body></body>
+</html>

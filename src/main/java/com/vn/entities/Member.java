@@ -1,18 +1,14 @@
 package com.vn.entities;
 
-import java.time.LocalDate;
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
+import com.vn.entitiess.Booking;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -27,6 +23,7 @@ public class Member {
 	private LocalDate birthDay;
 	private Integer nationalID;
 	private String email;
+	private String phone;
 	private String password;
 	private Integer cityID;
 	private Integer districtID;
@@ -34,7 +31,8 @@ public class Member {
 	private String street;
 	private String drivingLicense;
 	private Double wallet;
-	private Integer role;
+	private String role;
+	private boolean enabled = false;
 	
 	@OneToMany(mappedBy = "member")
 	private List<Booking> bookings;

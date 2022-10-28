@@ -1,6 +1,6 @@
-package vn.service;
+package com.vn.service;
 
-import com.vn.entitiess.Member;
+import com.vn.entities.Member;
 import com.vn.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

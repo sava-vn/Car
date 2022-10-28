@@ -1,17 +1,13 @@
 package com.vn.entities;
 
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
+import com.vn.entitiess.Booking;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,18 +22,18 @@ public class Car {
 	private Integer modelId;
 	private Integer year;
 	private String licensePlate;
-	private Integer colorID;
+	private Integer colorId;
 	private Integer seat;
 	private Integer transmission;
-	private Integer fule;
+	private Integer fuel;
 	private String registrationPaperUrl;
-	private String cetifiticateInspectionUrl;
+	private String certificateInspectionUrl;
 	private String insuranceUrl;
 	private Double mileage;
-	private Double fuleConsumption;
-	private Integer cityID;
-	private Integer districtID;
-	private Integer wardID;
+	private Double fuelConsumption;
+	private Integer cityId;
+	private Integer districtId;
+	private Integer wardId;
 	private String street;
 	private String description;
 	private Integer addFunction;

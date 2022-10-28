@@ -1,8 +1,8 @@
 package vn.entities;
 
-import com.vn.entities.Car;
-import com.vn.entities.Feedback;
-import com.vn.entities.Member;
+import com.vn.entitiess.Car;
+import com.vn.entitiess.Feedback;
+import com.vn.entitiess.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
