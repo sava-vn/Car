@@ -1,4 +1,4 @@
-package com.vn.reeposetory;
+package com.vn.repository;
 
 import com.vn.entities.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
