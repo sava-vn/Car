@@ -2,11 +2,7 @@ package com.vn.entities;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -46,7 +42,11 @@ public class Car {
 	private Integer deposit;
 	private Integer term;
 	private String termExtra;
-	
+
 	@OneToMany(mappedBy = "car")
 	private List<Booking> bookings;
+
+	public String showName(){
+		return brandId.toString() + modelId.toString() + year.toString();
+	}
 }
