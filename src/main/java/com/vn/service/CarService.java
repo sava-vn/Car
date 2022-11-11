@@ -12,6 +12,7 @@ import java.util.List;
 public interface CarService {
     Car findCarByLicensePlate(String licensePlate);
 
+
     Car saveCar(Car car);
 
     List<Car> findAll();

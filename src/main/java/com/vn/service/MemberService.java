@@ -21,4 +21,6 @@ public interface MemberService {
     void updatePassword(Member member, String newPassword);
 
     Member findByEmail(String email);
+
+    Optional<Member> findUserById(Integer id);
 }

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>CarRental</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS -->
+    <!--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500" />-->
+    <!--    <link rel="stylesheet" href="/assets/boostrap/css/bootstrap.min.css" />-->
+    <link rel="stylesheet" href="/assets/css/font-awesome-pro.css"/>
+    <link rel="stylesheet" href="/assets/css/form-element.css"/>
+    <link rel="stylesheet" href="/assets/css/style.css"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/boostrap/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/boostrap/css/animated.css">
+
+    <link rel="stylesheet" href="/assets/boostrap/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/boostrap/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/boostrap/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="/assets/boostrap/css/aos.css">
+
+    <link rel="stylesheet" href="/assets/boostrap/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="/assets/boostrap/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/boostrap/css/jquery.timepicker.css">
+
+
+    <link rel="stylesheet" href="/assets/boostrap/css/flaticon.css">
+    <link rel="stylesheet" href="/assets/boostrap/css/icomoon.css">
+    <link rel="stylesheet" href="/assets/boostrap/css/style.css">
+
+    <!-- ICON -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+          integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="/assets/css/home/home_customer.css">
+    <link rel="stylesheet" href="/assets/css/car/search_car.css">
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+<!--HEADER BEGIN-->
+<div class="home_customer_header">
+    <div class="home_customer_header_left">
+        <i class="fa-solid fa-car-side"></i>
+        <label>Rent a car today</label>
+    </div>
+    <nav class="home_customer_header_nav">
+        <li style="padding: 8px 32px">
+            <a href="#">About Us</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+               aria-expanded="false" style="padding: 8px 16px 8px 0px">
+                <img th:src="@{/images/person_1.jpg}"
+                     style="width: 32px; height: 32px;border-radius: 50%">
+                <label>Wellcome sava</label>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                    <a class="dropdown-item" href="/myProfile">
+                        <i class="fa-solid fa-address-card"></i>
+                        <label>My profile</label>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="myBooking">
+                        <i class="fa-solid fa-list"></i>
+                        <label>My Booking</label>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="myWallet">
+                        <i class="fa-solid fa-wallet"></i>
+                        <label>My wallet</label>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="/logout">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <label>Logout</label>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </nav>
+</div>
+<!--HEADER END-->
+
+<div style="margin:32px">
+    <a th:href="@{/home}">Home</a>
+    <span> > Search result</span>
+</div>
+
+<!--SEARCH_CAR BEGIN-->
+<form action="">
+    <div class="search_car_form_content">
+        <div class="form-group" style="flex: 2; margin-right: 16px; margin-bottom: 0px">
+            <label for="location">Location</label>
+            <input type="text" class="form-control" id="location" name="city" th:value="${city}">
+        </div>
+        <div class="form-group" style="flex: 1;margin: 0px 16px">
+            <label for="from_time">From</label>
+            <input type="datetime-local" class="form-control" id="from_time">
+        </div>
+        <div class="form-group" style="flex: 1; margin: 0px 16px">
+            <label for="to_time">To</label>
+            <input type="datetime-local" class="form-control" id="to_time">
+        </div>
+        <button type="submit" class="btn btn-primary" style="flex: 1; margin-left: 16px">Search</button>
+    </div>
+</form>
+<!--SEARCH_CAR END-->
+
+<!--LIST CAR BEGIN-->
+<div class="list_car_header">
+    <div>
+        <p style="color: black">There are <span th:text="${totolCar}"></span> cars that available for you!</p>
+    </div>
+    <div style="display: flex; align-items: center">
+        <a href="#" class="icon_border show_list" style="background-color: #ffc107;">
+            <i class="fa-solid fa-list-ul" style="margin: 0px"></i>
+        </a>
+        <a href="#" class="icon_border show_table">
+            <i class="fa-solid fa-table"></i>
+        </a>
+        <select class="custom-select">
+            <option value="1" selected>One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+    </div>
+</div>
+<!--LIST CAR END-->
+
+<!--CONTENT BEGIN-->
+<div class="list_car_content" th:if="${totolCar>0}">
+    <div class="car_item" th:each="carDTO :${carDTOs}">
+        <div class="car_image">
+            <div th:id="'carDTO' + ${carDTO.getId()}" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" th:src="@{${carDTO.getImages()[0]}}" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" th:src="@{${carDTO.getImages()[1]}}" alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" th:src="@{${carDTO.getImages()[2]}}" alt="Third slide">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" th:href="'#'+ 'carDTO' + ${carDTO.getId()}" role="button"
+                   data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" th:href="'#' + 'carDTO' + ${carDTO.getId()}" role="button"
+                   data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="car_info">
+            <div class="uc20_info_header">
+                <label th:text="${carDTO.getName()} +'   '"></label>
+            </div>
+
+            <div class="uc20_info_body">
+                <div class="uc20_info_label">
+                    <p>The powerful, stylish 2022 Camry Hybrid gives up nothing with its optimized fuel economy, *
+                        advanced
+                        tech and stirring drive. We have expanded our hybrid battery warranty to reflect our confidence
+                        in
+                        the quality, dependability and reliability of our products. </p>
+                </div>
+                <!--                <div class="uc20_info_detail">-->
+                <!--                    <p>-->
+                <!--                        <i style="color:#68B842" th:each="x:${#numbers.sequence(1,carDTO.getRating())}"-->
+                <!--                           class="fa-solid fa-star"></i>-->
+                <!--                    </p>-->
+                <!--                    <p th:text="${carDTO.getRides()}"></p>-->
+                <!--                    <p th:text="${carDTO.getPrice()} + '/day'"></p>-->
+                <!--                    <p th:text="${carDTO.getLocation()}"></p>-->
+                <!--                </div>-->
+
+                <div class="uc20_info_detail">
+                    <div class="uc20_info_detail_item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p> Ha Noi - Bac Tu Liem</p>
+                    </div>
+                    <div class="uc20_info_detail_item">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                        <p> $500.000</p>
+                    </div>
+                    <div class="uc20_info_detail_item">
+                        <i class="fa-solid fa-gear"></i>
+                        <p> 7</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="car_action">
+                <button type="submit" class="btn btn-success">RENT NOW</button>
+                <button type="submit" class="btn btn-success">VIEW DETAIL</button>
+            </div>
+        </div>
+    </div>
+    <div class="car_paging">
+        <nav aria-label="...">
+            <ul class="pagination">
+                <li th:class="${currentPage==1}? 'page-item disabled' : 'page-item'">
+                    <a class="page-link"
+                       th:href="@{/search/car(city = ${city}, size = ${pageSize}, page = ${1})}">First</a>
+                </li>
+                <li th:each="pageNumber: ${pageNumbers}"
+                    th:class="${pageNumber == currentPage}? 'page-item active': 'page-item'">
+                    <a class="page-link "
+                       th:href="@{/search/car(city = ${city}, size = ${pageSize}, page = ${pageNumber})}"
+                       th:text="${pageNumber}"></a>
+                </li>
+                <li th:class="${currentPage==totolPage}? 'page-item disabled' : 'page-item'">
+                    <a class="page-link"
+                       th:href="@{/search/car(city = ${city}, size = ${pageSize}, page = ${totolPage})}">Last</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<!--CONTENT END-->
+<!--FOOTER BEGIN-->
+<footer class="ftco-footer ftco-bg-dark ftco-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2"><a href="#" class="logo">Car<span>Rental</span></a></h2>
+                    <p><a href="#">Search Cars And Rates</a></p>
+                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                        <li class="ftco-animate">
+                            <a href="#">
+                               <span>
+                                   <i class="fa-brands fa-square-facebook"></i>
+                               </span>
+                            </a></li>
+                        <li class="ftco-animate justify-content-center">
+                            <a href="#">
+                                <span>
+                                    <i class="fa-brands fa-square-twitter"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="ftco-animate justify-content-center">
+                            <a href="#">
+                                <span>
+                                    <i class="fa-brands fa-square-instagram"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4 ml-md-5">
+                    <h2 class="ftco-heading-2">CUSTOMER ACCESS</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="py-2 d-block">Manage My Booking</a></li>
+                        <li><a href="#" class="py-2 d-block">My Wallet</a></li>
+                        <li><a href="#" class="py-2 d-block">My Car</a></li>
+                        <li><a href="#" class="py-2 d-block">Log in</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">JOIN US</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="py-2 d-block">New User Sign Up</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">HAVE A QUESTION?</h2>
+                    <div class="block-23 mb-3">
+                        <ul>
+                            <a href="#">
+                                <i class="fa-solid fa-phone"></i>
+                                <span class="text">369 Duy Tan, Cau Giay, Ha Noi, Viet Nam</span>
+                            </a>
+                            <li>
+                                <a href="#">
+                                    <i class="fa-solid fa-phone"></i>
+                                    <span class="text">+1900 0091</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <span class="text">carrental@support.com</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--FOOTER END-->
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#F96D00"/>
+    </svg>
+</div>
+
+
+<!-- Javascript -->
+<script src="/assets/boostrap/js/jquery.min.js"></script>
+<script src="/assets/boostrap/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="/assets/boostrap/js/popper.min.js"></script>
+<script src="/assets/boostrap/js/bootstrap.min.js"></script>
+<script src="/assets/boostrap/js/jquery.easing.1.3.js"></script>
+<script src="/assets/boostrap/js/jquery.waypoints.min.js"></script>
+<script src="/assets/boostrap/js/jquery.stellar.min.js"></script>
+<script src="/assets/boostrap/js/owl.carousel.min.js"></script>
+<script src="/assets/boostrap/js/jquery.magnific-popup.min.js"></script>
+<script src="/assets/boostrap/js/aos.js"></script>
+<script src="/assets/boostrap/js/jquery.animateNumber.min.js"></script>
+<script src="/assets/boostrap/js/bootstrap-datepicker.js"></script>
+<script src="/assets/boostrap/js/jquery.timepicker.min.js"></script>
+<script src="/assets/boostrap/js/scrollax.min.js"></script>
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="js/google-map.js"></script>
+<script src="/assets/boostrap/js/main.js"></script>
+
+<script src="/assets/js/jquery-1.11.1.min.js"></script>
+<!--<script src="/assets/boostrap/js/bootstrap.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
+        integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/assets/js/login.js"></script>
+<script src="/assets/js/signup.js"></script>
+<script src="/assets/js/search_car.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Car</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500"/>
+  <link rel="stylesheet" href="/assets/boostrap/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css"/>
+  <link rel="stylesheet" href="/assets/css/form-element.css"/>
+  <link rel="stylesheet" href="/assets/css/addCar.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div>
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="form-inline my-2 my-lg-0">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <form action="/Add-Car" method="post" class="add-car-form-1" id="regForm" >
+    <!-- Circles which indicates the steps of the form: -->
+    <div style="text-align:center">
+      <span class="step">Basic</span>
+      <span class="step">Details</span>
+      <span class="step">Pricing</span>
+      <span class="step">Finish</span>
+
+    </div>
+    <h1>Add a car:</h1>
+    <div class="tab">
+      <p>
+        License plate:
+        <input oninput="this.className = ''" name="licensePlate">
+      </p>
+      <p>
+        Color
+        <select oninput="this.className = ''" name="colorID">
+          <option selected="selected" value="1">Dark</option>
+          <option value="2">Blue</option>
+          <option value="3">Green</option>
+          <option value="4">Gray</option>
+          <option value="5">Red</option>
+        </select>
+      </p>
+      <p>
+        Brand name
+        <select oninput="this.className = ''" name="brandId">
+          <option selected="selected" value="1">Audi</option>
+          <option value="2">Mec</option>
+          <option value="3">Volvo</option>
+          <option value="4">Dugati</option>
+          <option value="5">Toyota</option>
+        </select>
+      </p>
+      <p>
+        Model
+        <select oninput="this.className = ''" name="modelId">
+          <option selected="selected" value="1">Low</option>
+          <option value="2">High</option>
+          <option value="3">Medium</option>
+          <option value="4">Custom</option>
+          <option value="5">Chicken</option>
+        </select>
+      </p>
+      <p>
+        Production year
+        <select oninput="this.className = ''" name="year">
+          <option selected="selected" value="2022">2022</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+        </select>
+      </p>
+      <p>
+        No. of seats
+        <select oninput="this.className = ''" name="seat">
+          <option selected="selected" value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </p>
+      <div class="form-group">
+        <input type="radio" oninput="this.className = ''" class="btn-check" name="transmission" id="option1"
+               autocomplete="off" value="1" checked>
+        <label class="btn btn-secondary" for="option1">Automatic</label>
+        <input type="radio" oninput="this.className = ''" class="btn-check" name="transmission" id="option2"
+               autocomplete="off" value="2">
+        <label class="btn btn-secondary" for="option2">Manual</label>
+      </div>
+      <div class="form-group">
+        <input type="radio" oninput="this.className = ''" class="btn-check" name="fule" id="option3"
+               autocomplete="off" value="1" checked>
+        <label class="btn btn-secondary" for="option3">Gasoline</label>
+        <input type="radio" oninput="this.className = ''" class="btn-check" name="fule" id="option4"
+               autocomplete="off" value="2">
+        <label class="btn btn-secondary" for="option4">Diesel</label>
+      </div>
+      <div class="form-group">
+        <label>Registration paper:</label>
+        <input type="file" name="registrationPaperUrl" accept="image/jpeg, image/png" id="target1">
+        <label >Certificate of inspection</label>
+        <input type="file" name="cetifiticateInspectionUrl" accept="image/jpeg, image/png" id="target2">
+        <label >Insurance</label>
+        <input type="file" name="insuranceUrl" accept="image/*" id="target3">
+      </div>
+
+    </div>
+    <div class="tab">
+      <div class="form-group">
+        Mileage:
+        <input type="number" oninput="this.className = ''" name="mileage">
+      </div>
+      <div class="form-group">
+        Fuel consumption
+        <input type="number" name="fuleConsumption" oninput="this.className = ''"/>
+        <div>liter/100km</div>
+      </div>
+      <div class="form-group">
+        Address
+        <input type="text" name="search" oninput="this.className = ''" class="form-text form-control"
+               placeholder="Search for an address"/>
+        <select class="custom-select" oninput=" this.className = ''" name="cityID">
+          <option selected="selected" value="1">Ha Noi</option>
+          <option value="2">Hai Phong</option>
+          <option value="3">TP.HCM</option>
+          <option value="4">Hai Duong</option>
+          <option value="5">Ha Long</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <select class="custom-select" name="districtID" oninput="this.className = ''">
+          <option selected="selected" value="1">Thanh Xuan</option>
+          <option value="2">Hai Ba Trung</option>
+          <option value="3">Ha Dong</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <select class="custom-select" name="wardID" oninput="this.className = ''">
+          <option selected="selected" value="1">Thanh Xuan Trung</option>
+          <option value="2">Thanh Xuan Bac</option>
+          <option value="3">Thanh Xuan Nam</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="text" name="street" oninput="this.className = ''" class="form-text form-control"
+               placeholder="House number, Street"/>
+      </div>
+      <div class="form-group">
+        Description
+        <textarea name="description" class="form-control" oninput="this.className = ''"
+                  id="exampleFormControlTextarea1" rows="10"
+                  placeholder="Description of your vehicle"></textarea>
+      </div>
+      <div class="form-group">
+        <div class="checkboxgroup1">
+          <div>Bluetooth</div>
+          <input type="checkbox" checked>
+          <title>GPS</title>
+          <input type="checkbox">
+          <title>Camera</title>
+          <input type="checkbox">
+        </div>
+        <div class="checkboxgroup2">
+          <title>Sun roof</title>
+          <input type="checkbox" checked>
+          <title>Child lock</title>
+          <input type="checkbox">
+          <title>Child seat</title>
+          <input type="checkbox">
+        </div>
+        <div class="checkboxgroup3">
+          <title>DVD</title>
+          <input type="checkbox">
+          <title>USB</title>
+          <input type="checkbox">
+        </div>
+      </div>
+      <!--            <div class="form-group">-->
+      <!--                <label for="">Front</label>-->
+      <!--                <input type="file" name="registrationPaperUrl" accept="image/*" id="target4">-->
+      <!--                <label for="">Back</label>-->
+      <!--                <input type="file" name="registrationPaperUrl" accept="image/*" id="target5">-->
+      <!--                <label for="">Left</label>-->
+      <!--                <input type="file" name="registrationPaperUrl" accept="image/*" id="target6">-->
+      <!--                <label for="">Right</label>-->
+      <!--                <input type="file" name="registrationPaperUrl" accept="image/*" id="target7">-->
+      <!--            </div>-->
+    </div>
+    <div class="tab">
+      <div>
+        Set base price for your car:
+        <input type="number" name="price" oninput="this.className = ''"/> VND/Day
+      </div>
+      <div>
+        Required deposit:
+        <input type="number" name="deposit" oninput="this.className = ''"/>
+      </div>
+      <div>
+        Terms of use
+        <input type="checkbox" name="term" oninput="this.className = ''" value="1">No smoking
+        <input type="checkbox" name="term" oninput="this.className = ''" value="2">No food in car
+        <input type="checkbox" name="term" oninput="this.className = ''" value="3">No Pet
+        <input type="checkbox" name="" oninput="this.className = ''" value="Other" id="toggle">Other
+        <div id="content" class="is-hidden">
+          <label>Please sprcify:</label>
+          <textarea name="termExtra" cols="30" rows="10"
+                    oninput="this.className = ''"></textarea>
+        </div>
+      </div>
+
+    </div>
+    <div class="tab">
+      Preview......
+    </div>
+
+
+    <div style="overflow:auto;">
+      <div style="float:right;">
+        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+      </div>
+    </div>
+  </form>
+
+
+</div>
+
+<script src="/assets/js/addCar.js"></script>
+<!-- Javascript -->
+<script src="/assets/js/jquery-1.11.1.min.js"></script>
+<script src="/assets/boostrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
+        integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</body>
+</html>

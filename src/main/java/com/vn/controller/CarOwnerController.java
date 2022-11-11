@@ -11,15 +11,16 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import java.util.List;
 
 @Controller
@@ -37,7 +38,6 @@ public class CarOwnerController {
     public String getFormAddCar() {
         return "Carowner/addCar";
     }
-
     @GetMapping("/Add-Car/error")
     public String getFormAddCarError() {
         return "Carowner/addCar";
@@ -69,13 +69,14 @@ public class CarOwnerController {
         String rightImageUrl = StringUtils.cleanPath(multipartFile7.getOriginalFilename());
 
 
-        car.setRegistrationPaperUrl(registrationPaper);
-        car.setCetifiticateInspectionUrl(cetifiticateInspection);
+        car.setRegistration(registrationPaper);
+        car.setInspection(cetifiticateInspection);
         car.setInsuranceUrl(insurance);
-        car.setFrontImageUrl(frontImageUrl);
-        car.setBackImageUrl(backImageUrl);
-        car.setLeftImageUrl(leftImageUrl);
-        car.setRightImageUrl(rightImageUrl);
+        String images = frontImageUrl + ","
+                + backImageUrl +","
+                + leftImageUrl +","
+                + rightImageUrl;
+        car.setImages(images);
 
         Car savecar = carService.saveCar(car);
 
@@ -195,6 +196,13 @@ public class CarOwnerController {
         model.addAttribute("reverseSortDir", reverseSortDir);
 
         return "Carowner/list_car";
+    }
+
+    @GetMapping("/List-Car")
+    public String getListCar(@ModelAttribute("car") Car car, Model model){
+        List<Car> cars = carService.findAll();
+        model.addAttribute("cars", cars);
+        return "Carowner/listCar";
     }
 
 }

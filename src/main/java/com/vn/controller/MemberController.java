@@ -8,6 +8,6 @@ public class MemberController {
         @GetMapping(value= {"/",""})
         public String home() {
 
-            return "Home";
+            return "home_guest";
         }
 }

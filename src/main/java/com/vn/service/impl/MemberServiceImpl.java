@@ -64,4 +64,10 @@ public class MemberServiceImpl implements MemberService {
     public Member findByEmail(String email) {
         return memberRepository.findByEmail(email);
     }
+
+    @Override
+    public Optional<Member> findUserById(Integer id) {
+        return memberRepository.findById(id);
+
+    }
 }

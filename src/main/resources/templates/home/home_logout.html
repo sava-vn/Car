@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log out</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+  <link rel="stylesheet" href="/assets/boostrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/assets/css/form-element.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+<body>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#logoutModal">
+  Log out
+</button>
+<a th:href="@{/editProfile}" class="btn btn-primary">Edit</a>
+
+<!-- Modal -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Notification</h5>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to log out?
+      </div>
+      <div class="modal-footer">
+        <input type="submit" class="btn btn-secondary" data-dismiss="modal" value="Cancel"/>
+        <input th:href="@{/logout}" type="submit" class="btn btn-primary" id="OK" value="OK"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Javascript -->
+<script src="/assets/js/jquery-1.11.1.min.js"></script>
+<script src="/assets/boostrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
+        integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/assets/js/forgotpass.js"></script>
+</body>
+</html>

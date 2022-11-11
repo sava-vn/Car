@@ -1,13 +1,14 @@
 package com.vn.controller;
 
 
+import com.sun.net.httpserver.HttpPrincipal;
 import com.vn.entities.Member;
 import com.vn.service.MemberService;
 import com.vn.utils.Utility;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
-import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
+import java.security.Principal;
 
 @Controller
 public class GeneralController {
@@ -25,15 +27,19 @@ public class GeneralController {
     @Autowired
     private MemberService memberService;
 
-    @Autowired
-    private JavaMailSender mailSender;
 
     @Autowired
     private Utility utility;
 
-    @GetMapping("/home")
-    public String homePage() {
-        return "home_logout";
+    @GetMapping("/home_guest")
+    public String homeGuestPage() {
+        return "home_guest";
+    }
+
+
+    @GetMapping("/about")
+    public String aboutPage() {
+        return "about";
     }
 
     @GetMapping("/signup")
@@ -50,18 +56,22 @@ public class GeneralController {
             return "signup";
         }
         memberService.save(member);
-        return "redirect:/signin";
+        return "redirect:/home_guest";
     }
 
-    @GetMapping("/signin")
+    @GetMapping("/login")
     public String signIn() {
-        return "signin";
+        return "account/login";
     }
 
-    @PostMapping("/signin")
-    public String signInPage(@ModelAttribute("member")Member member) {
+    @PostMapping("/login")
+    public String signInPage(Principal principal) {
 
-        return "redirect:/home";
+        Member member = (Member) ((Authentication)principal).getPrincipal();
+
+        if("CUSTOMER".equals(member.getRole()))
+            return "redirect:/home/customer";
+        return "redirect:/home/carOwner";
     }
 
     @GetMapping("/forgot_password")
@@ -132,8 +142,15 @@ public class GeneralController {
     }
 
     @GetMapping("/logout")
-    public String logOut() {
-        return "Home";
+    public String logOut(Principal principal) {
+        return "home_guest";
+    }
+
+    @GetMapping("/ediProfile")
+    public String profilePage(Model model, Principal principal){
+        Member member = (Member) ((Authentication)principal).getPrincipal();
+        model.addAttribute("member", member);
+        return "/member/edit";
     }
 
 }

@@ -1,0 +1,102 @@
+.search_car_form_content {
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: self-end;
+    padding: 32px 80px 48px;
+    margin: 0 32px 32px;
+}
+
+.list_car_header {
+    display: flex;
+    justify-content: space-between;
+    margin: 16px 32px;
+}
+
+.icon_border {
+    border-radius: 4px;
+    padding: 0 6px;
+    margin-right: 16px;
+    border: 1px solid #ffc107;
+}
+
+.icon_border:hover {
+    background-color: #ffc107;
+}
+
+i {
+    margin-right: 16px;
+}
+
+.list_car_content {
+    display: flex;
+    flex-direction: column;
+}
+
+.car_item {
+    display: flex;
+    padding: 32px;
+    align-items: stretch;
+}
+
+.car_image {
+    display: flex;
+    flex: 1;
+    justify-content: end;
+    padding-right: 32px;
+    align-items: center;
+}
+.carousel-inner{
+    width: 580px;
+    height: 320px;
+    border-radius: 16px;
+}
+.carousel-item img{
+    width: 580px;
+    height: 320px;
+    border-radius: 16px;
+}
+.car_info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-left: 32px;
+    padding-right: 84px;
+}
+
+.car_action button {
+    width: 150px;
+    margin-right: 24px;
+    background-color:#CC0041 ;
+}
+
+.car_paging {
+    display: flex;
+    padding: 16px 32px;
+    justify-content: end;
+}
+.uc20_info_header{
+    color: black;
+    font-weight: 450;
+    font-size: 1.8rem;
+}
+.uc20_info_body{
+    text-align: justify;
+    margin-bottom: 16px;
+    color: black;
+}
+.uc20_info_label{
+    margin: 24px 24px 24px 0px;
+}
+.uc20_info_detail{
+    display: flex;
+    margin-bottom: 16px;
+}
+.uc20_info_detail_item{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    margin-right: 32px;
+}
+.uc20_info_detail_item p, i{
+    margin: 0px 6px 0px 0;
+}

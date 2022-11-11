@@ -51,13 +51,9 @@ $(document).ready(function () {
         },
     });
 
-    // $('.forgotPass-1').on('submit', e => {
+    // $('.forgotPass-1').on('submit', function(e){
+    //     $('#submitModal').modal('show');
     //     e.preventDefault();
-        // do ajax for sending email.
-
-        // on success. => show alert popup $('#popup').show();
-        // user press ok button => redirect home, sign
-
-    // })
+    // });
 
 });

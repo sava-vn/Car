@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>CarRental</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS -->
+    <!--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500" />-->
+    <!--    <link rel="stylesheet" href="/assets/boostrap/css/bootstrap.min.css" />-->
+    <link rel="stylesheet" href="/assets/css/font-awesome-pro.css"/>
+    <link rel="stylesheet" href="/assets/css/form-element.css"/>
+    <link rel="stylesheet" href="/assets/css/style.css"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/boostrap/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/boostrap/css/animated.css">
+
+    <link rel="stylesheet" href="/assets/boostrap/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/boostrap/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/boostrap/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="/assets/boostrap/css/aos.css">
+
+    <link rel="stylesheet" href="/assets/boostrap/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="/assets/boostrap/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/boostrap/css/jquery.timepicker.css">
+
+
+    <link rel="stylesheet" href="/assets/boostrap/css/flaticon.css">
+    <link rel="stylesheet" href="/assets/boostrap/css/icomoon.css">
+    <link rel="stylesheet" href="/assets/boostrap/css/style.css">
+
+    <!-- ICON -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+          integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="/assets/css/home/home_customer.css">
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+<!--HEADER BEGIN-->
+<div class="home_customer_header">
+    <div class="home_customer_header_left">
+        <i class="fa-solid fa-car-side"></i>
+        <label>Rent a car today</label>
+    </div>
+    <nav class="home_customer_header_nav">
+        <li style="padding: 8px 32px">
+            <a href="#">About Us</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+               aria-expanded="false" style="padding: 8px 16px 8px 0px">
+                <img th:src="@{/images/person_1.jpg}"
+                     style="width: 32px; height: 32px;border-radius: 50%">
+                <label>Wellcome sava</label>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                    <a class="dropdown-item" href="/myProfile">
+                        <i class="fa-solid fa-address-card"></i>
+                        <label>My profile</label>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="myBooking">
+                        <i class="fa-solid fa-list"></i>
+                        <label>My Booking</label>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="myWallet">
+                        <i class="fa-solid fa-wallet"></i>
+                        <label>My wallet</label>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="/logout">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <label>Logout</label>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </nav>
+</div>
+<!--HEADER END-->
+
+
+<!--SERCH_CAR BIGIN-->
+<div class="home_customer_search">
+    <div class="home_customer_search_left">
+        <h2>
+            Looking for a vehichle?
+            You're at the right place.
+        </h2>
+        <br>
+        <p>
+            We have a large sellection of locally owned cars
+            available for you so choose from. Rentail plans
+            are customised to your needs.
+        </p>
+        <p>
+            With over 500 cars located nationwide we will
+            have something for you.
+        </p>
+    </div>
+    <div class="home_customer_search_rigth">
+        <div class="home_customer_search_rigth_content">
+            <div class="home_customer_search_rigth_header">
+                <h2>
+                    Find the ideal car rental for your trip
+                </h2>
+            </div>
+            <form th:action="@{/search/car}" class="home_customer_search_rigth_form" method="get">
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" class="form-control" id="location" name="city" placeholder="Enter localtion">
+                </div>
+                <div class="abcxyz">
+                    <div class="form-group">
+                        <label for="from_time">From</label>
+                        <input type="datetime-local" class="form-control" id="from_time" name="from_time">
+                    </div>
+                    <div class="form-group">
+                        <label for="to_time">To</label>
+                        <input type="datetime-local" class="form-control" id="to_time" name="to_time">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--ABOUT_US BEGIN-->
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+                <span class="subheading">Services</span>
+                <h2 class="mb-3">Why Us?</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="services services-2 w-100 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                        <i class="fa-solid fa-piggy-bank"></i>
+                    </div>
+                    <div class="text w-100">
+                        <h3 class="heading mb-2">Save Money</h3>
+                        <p>We have no setup or registration fees. You're only charged when you rent a car So get started
+                            for FREE!.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="services services-2 w-100 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                        <i class="fa-solid fa-truck-pickup"></i>
+                    </div>
+                    <div class="text w-100">
+                        <h3 class="heading mb-2">Convenient</h3>
+                        <p>We have a large selection of privately owned cars to suit your needs throughout the
+                            country.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="services services-2 w-100 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                        <i class="fa-solid fa-gavel"></i>
+                    </div>
+                    <div class="text w-100">
+                        <h3 class="heading mb-2">Legal and insurance</h3>
+                        <p>We fully cover all rentals and even provide roadside assistance. Our rating system and
+                            extended member profile checks provide safety.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="services services-2 w-100 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <div class="text w-100">
+                        <h3 class="heading mb-2">24/7 Support</h3>
+                        <p>Our team is ready to support you all along the way with our 24/7 hotline and services.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--ABOUT_US END-->
+
+
+<!--FEEDBACK BEGIN-->
+<section class="ftco-section testimony-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+                <span class="subheading">Testimonial</span>
+                <h2 class="mb-3">What People Say?</h2>
+            </div>
+        </div>
+        <div class="row ftco-animate">
+            <div class="col-md-12">
+                <div class="carousel-testimony owl-carousel ftco-owl">
+                    <div class="item">
+                        <div class="testimony-wrap rounded text-center py-4 pb-5">
+                            <div class="user-img mb-2">
+                                <img class="image_circle" th:src="@{/images/person_1.jpg}">
+                            </div>
+                            <div class="text pt-4">
+                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia
+                                    and
+                                    Consonantia, there live the blind texts.</p>
+                                <p class="name">Roger Scott</p>
+                                <span class="position">Marketing Manager</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap rounded text-center py-4 pb-5">
+                            <div class="user-img mb-2">
+                                <img class="image_circle" th:src="@{/images/person_1.jpg}">
+                            </div>
+                            <div class="text pt-4">
+                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia
+                                    and
+                                    Consonantia, there live the blind texts.</p>
+                                <p class="name">Roger Scott</p>
+                                <span class="position">Interface Designer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap rounded text-center py-4 pb-5">
+                            <div class="user-img mb-2">
+                                <img class="image_circle" th:src="@{/images/person_1.jpg}">
+                            </div>
+                            <div class="text pt-4">
+                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia
+                                    and
+                                    Consonantia, there live the blind texts.</p>
+                                <p class="name">Roger Scott</p>
+                                <span class="position">UI Designer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap rounded text-center py-4 pb-5">
+                            <div class="user-img mb-2">
+                                <img class="image_circle" th:src="@{/images/person_1.jpg}">
+                            </div>
+                            <div class="text pt-4">
+                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia
+                                    and
+                                    Consonantia, there live the blind texts.</p>
+                                <p class="name">Roger Scott</p>
+                                <span class="position">Web Developer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap rounded text-center py-4 pb-5">
+                            <div class="user-img mb-2">
+                                <img class="image_circle" th:src="@{/images/person_1.jpg}">
+                            </div>
+                            <div class="text pt-4">
+                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia
+                                    and
+                                    Consonantia, there live the blind texts.</p>
+                                <p class="name">Roger Scott</p>
+                                <span class="position">System Analyst</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--FEEDBACK END-->
+
+
+<!--FIND_US BEGIN-->
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+                <span class="subheading">LOCATION</span>
+                <h2>Where To Find Us?</h2>
+            </div>
+        </div>
+
+        <div class="row d-flex">
+
+            <div class="col-md-4 d-flex ftco-animate hanoi">
+                <div style="position: relative; display:flex; flex-direction:column; justify-content:flex-end;"
+                     class="blog-entry justify-content-end">
+                    <a href="blog-single.html" class="block-20"
+                       style="background-image: url('/images/hanoi.jpg'); width: auto;">
+                    </a>
+                    <div class="text pt-4"
+                         style="position: absolute; background: linear-gradient(to top, rgba(255, 255, 255, 0.85), transparent) ;">
+                        <div class="meta">
+                            <h3 class="heading px-4"><a href="#">Ha Noi</a></h3>
+                            <div class="px-4"><a href="#">80+ cars</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex ftco-animate">
+                <div style="position: relative; display:flex; flex-direction:column; justify-content:flex-end;"
+                     class="blog-entry justify-content-end">
+                    <a href="blog-single.html" class="block-20"
+                       style="background-image: url('/images/saigon.jpg'); width: auto;">
+                    </a>
+                    <div class="text pt-4"
+                         style="position: absolute; background: linear-gradient(to top, rgba(255, 255, 255, 0.85), transparent) ;">
+                        <div class="meta">
+                            <h3 class="heading px-4"><a href="#">Ho Chi Minh City</a></h3>
+                            <div class="px-4"><a href="#">100+ cars</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex ftco-animate">
+                <div style="position: relative; display:flex; flex-direction:column; justify-content:flex-end;"
+                     class="blog-entry justify-content-end">
+                    <a href="blog-single.html" class="block-20"
+                       style="background-image: url('/images/danang.jpg'); width: auto;">
+                    </a>
+                    <div class="text pt-4"
+                         style="position: absolute; background: linear-gradient(to top, rgba(255, 255, 255, 0.85), transparent) ;">
+                        <div class="meta">
+                            <h3 class="heading px-4"><a href="#">Da Nang - Hoi An</a></h3>
+                            <div class="px-4"><a href="#">90+ cars</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex ftco-animate">
+                <div style="position: relative; display:flex; flex-direction:column; justify-content:flex-end;"
+                     class="blog-entry justify-content-end">
+                    <a href="blog-single.html" class="block-20"
+                       style="background-image: url('/images/nhatrang.jpg'); width: auto;">
+                    </a>
+                    <div class="text pt-4"
+                         style="position: absolute; background: linear-gradient(to top, rgba(255, 255, 255, 0.85), transparent) ;">
+                        <div class="meta">
+                            <h3 class="heading px-4"><a href="#">Nha Trang</a></h3>
+                            <div class="px-4"><a href="#">50+ cars</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex ftco-animate">
+                <div style="position: relative; display:flex; flex-direction:column; justify-content:flex-end;"
+                     class="blog-entry justify-content-end">
+                    <a href="blog-single.html" class="block-20"
+                       style="background-image: url('/images/dalat.jpg'); width: auto;">
+                    </a>
+                    <div class="text pt-4"
+                         style="position: absolute; background: linear-gradient(to top, rgba(255, 255, 255, 0.85), transparent) ;">
+                        <div class="meta">
+                            <h3 class="heading px-4"><a href="#">Da Lat</a></h3>
+                            <div class="px-4"><a href="#">80+ cars</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex ftco-animate">
+                <div style="position: relative; display:flex; flex-direction:column; justify-content:flex-end;"
+                     class="blog-entry justify-content-end">
+                    <a href="blog-single.html" class="block-20"
+                       style="background-image: url('/images/quangninh.jpg'); width: auto;">
+                    </a>
+                    <div class="text pt-4"
+                         style="position: absolute; background: linear-gradient(to top, rgba(255, 255, 255, 0.85), transparent) ;">
+                        <div class="meta">
+                            <h3 class="heading px-4"><a href="#">Quang Ninh</a></h3>
+                            <div class="px-4"><a href="#">70+ cars</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!--FIND_US END-->
+
+
+<!--FOOTER BEGIN-->
+<footer class="ftco-footer ftco-bg-dark ftco-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2"><a href="#" class="logo">Car<span>Rental</span></a></h2>
+                    <p><a href="#">Search Cars And Rates</a></p>
+                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                        <li class="ftco-animate">
+                            <a href="#">
+                               <span>
+                                   <i class="fa-brands fa-square-facebook"></i>
+                               </span>
+                            </a></li>
+                        <li class="ftco-animate justify-content-center">
+                            <a href="#">
+                                <span>
+                                    <i class="fa-brands fa-square-twitter"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="ftco-animate justify-content-center">
+                            <a href="#">
+                                <span>
+                                    <i class="fa-brands fa-square-instagram"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4 ml-md-5">
+                    <h2 class="ftco-heading-2">CUSTOMER ACCESS</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="py-2 d-block">Manage My Booking</a></li>
+                        <li><a href="#" class="py-2 d-block">My Wallet</a></li>
+                        <li><a href="#" class="py-2 d-block">My Car</a></li>
+                        <li><a href="#" class="py-2 d-block">Log in</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">JOIN US</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="py-2 d-block">New User Sign Up</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">HAVE A QUESTION?</h2>
+                    <div class="block-23 mb-3">
+                        <ul>
+                            <a href="#">
+                                <i class="fa-solid fa-phone"></i>
+                                <span class="text">369 Duy Tan, Cau Giay, Ha Noi, Viet Nam</span>
+                            </a>
+                            <li>
+                                <a href="#">
+                                    <i class="fa-solid fa-phone"></i>
+                                    <span class="text">+1900 0091</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <span class="text">carrental@support.com</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--FOOTER END-->
+
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#F96D00"/>
+    </svg>
+</div>
+
+
+<!-- Javascript -->
+<script src="/assets/boostrap/js/jquery.min.js"></script>
+<script src="/assets/boostrap/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="/assets/boostrap/js/popper.min.js"></script>
+<script src="/assets/boostrap/js/bootstrap.min.js"></script>
+<script src="/assets/boostrap/js/jquery.easing.1.3.js"></script>
+<script src="/assets/boostrap/js/jquery.waypoints.min.js"></script>
+<script src="/assets/boostrap/js/jquery.stellar.min.js"></script>
+<script src="/assets/boostrap/js/owl.carousel.min.js"></script>
+<script src="/assets/boostrap/js/jquery.magnific-popup.min.js"></script>
+<script src="/assets/boostrap/js/aos.js"></script>
+<script src="/assets/boostrap/js/jquery.animateNumber.min.js"></script>
+<script src="/assets/boostrap/js/bootstrap-datepicker.js"></script>
+<script src="/assets/boostrap/js/jquery.timepicker.min.js"></script>
+<script src="/assets/boostrap/js/scrollax.min.js"></script>
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="js/google-map.js"></script>
+<script src="/assets/boostrap/js/main.js"></script>
+
+<script src="/assets/js/jquery-1.11.1.min.js"></script>
+<!--<script src="/assets/boostrap/js/bootstrap.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
+        integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/assets/js/login.js"></script>
+<script src="/assets/js/signup.js"></script>
+
+</body>
+</html>
