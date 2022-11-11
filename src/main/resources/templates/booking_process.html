@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Booking</title>
+    <!--CSS-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500"/>
+    <link rel="stylesheet" href="/assets/boostrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="/assets/css/form-element.css"/>
+    <!--JS-->
+    <script type="text/javascript" src="/assets/js/booking-process.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div>
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="form-inline my-2 my-lg-0">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="bookingDetails">
+        <h3>Booking Details</h3>
+        <p>Change details</p>
+        <ul>
+            <li>Pick-up location:</li>
+            <li>Pick up date and time:</li>
+            <li>Return date and time:</li>
+        </ul>
+    </div>
+    <div class="steps">
+        <button class="btn btn-primary" id="bookingStep1">Step 1: Booking Information</button>
+        <button class="btn btn-primary" id="bookingStep2">Step 2: Payment</button>
+        <button class="btn btn-primary" id="bookingStep3">Step 3: Finish</button>
+    </div>
+    <div class="bookingSummary">
+        <div>
+            Ratings:
+            No. of rides:
+            Price:
+            Location:
+            Status:
+        </div>
+        <div>
+            Booking summary
+            Number of days:
+            Price per day:
+            Total:
+            Deposit:
+        </div>
+    </div>
+    <div class="step1">
+        <div class="renterInfo">
+            Renter's Information
+            <form>
+                <div>
+                    <div class="mb-3">
+                        <label for="fullName" class="form-label">Full name: </label>
+                        <input type="text" class="form-control" id="fullName1" name="fullName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone Number: </label>
+                        <input type="text" class="form-control" id="phone1" name="phone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nationalId" class="form-label">National ID No.: </label>
+                        <input type="number" class="form-control" id="nationalId1" name="nationalId" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dob" class="form-label">Date of Birth: </label>
+                        <input type="date" class="form-control" id="dob1" name="dob" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address: </label>
+                        <input type="email" class="form-control" id="email1" name="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="drivingLicense" class="form-label">Driving license: </label>
+                        <input type="file" class="form-control" id="drivingLicense1" name="drivingLicense">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address: </label>
+                    <select class="form-control" id="city1" name="city">
+                        <option>
+                    </select>
+                    <select class="form-control" id="district1" name="district">
+                        <option>
+                    </select>
+                    <select class="form-control" id="ward1" name="ward">
+                        <option>
+                    </select>
+                    <input type="text" class="form-control" id="address1" name="address">
+                </div>
+            </form>
+        </div>
+        <div class="driverInfo">
+            Driver's Information
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="notRenter" name="notRenter">
+                <label class="form-check-label" for="notRenter">Different than Renter's information</label>
+            </div>
+            <form>
+                <div>
+                    <div class="mb-3">
+                        <label for="fullName" class="form-label">Full name: </label>
+                        <input type="text" class="form-control" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone Number: </label>
+                        <input type="text" class="form-control" id="phone" name="phone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nationalId" class="form-label">National ID No.: </label>
+                        <input type="number" class="form-control" id="nationalId" name="nationalId" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dob" class="form-label">Date of Birth: </label>
+                        <input type="date" class="form-control" id="dob" name="dob" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address: </label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="drivingLicense" class="form-label">Driving license: </label>
+                        <input type="file" class="form-control" id="drivingLicense" name="drivingLicense">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address: </label>
+                    <select class="form-control" id="city" name="city">
+                        <option>
+                    </select>
+                    <select class="form-control" id="district" name="district">
+                        <option>
+                    </select>
+                    <select class="form-control" id="ward" name="ward">
+                        <option>
+                    </select>
+                    <input type="text" class="form-control" id="address" name="address">
+                </div>
+            </form>
+        </div>
+        <div>
+            <input type="button" class="btn btn-secondary" value="Cancel">
+            <input type="button" class="btn btn-link" value="Next">
+        </div>
+    </div>
+    <div class="step2">
+        Please select your payment method:
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="wallet" id="wallet">
+            <label class="form-check-label" for="wallet">My wallet</label>
+            Current balance: <span></span> <span class="text-danger">(Insufficient)</span>
+            Please go to My wallet to top-up and try again
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="cash" id="cash">
+            <label class="form-check-label" for="wallet">Cash</label>
+            Our operator will contact you for further instruction
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="bankTransfer" id="bankTransfer">
+            <label class="form-check-label" for="bankTransfer">Bank Transfer</label>
+            Our operator will contact you for further instruction
+        </div>
+        <div>
+            <input type="button" class="btn btn-link" value="Cancel">
+            <input type="submit" class="btn btn-primary" value="Confirm Payment">
+            <span>The deposit amount will be deducted from your wallet</span>
+        </div>
+    </div>
+    <div class="step3">
+        <div>
+            <p>You've successfully booked from to </p>
+            <p>Your booking number is: </p>
+            <p>Our operator will contact you with further guidance about pickup.</p>
+        </div>
+        <div>
+            <a class="btn btn-link" href="../home/home_guest.html" role="button">Go to homepage</a>
+            <button class="btn btn-secondary">Book another car</button>
+            <button class="btn btn-primary">View Booking</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

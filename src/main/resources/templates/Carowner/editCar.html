@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Car</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500"/>
+    <link rel="stylesheet" href="/assets/boostrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="/assets/css/form-element.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style >
+        .fa {
+            font-size: 25px;
+        }
+
+        .checkedd {
+            color: orange;
+        }
+    </style>
+</head>
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div>
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="form-inline my-2 my-lg-0">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <p class="link">
+        <a href="/homepagecarowner">Home</a>
+        <a href="/List-Car">My Car</a>
+        <a href="#">Edit details</a>
+    </p>
+    <h5>EDIT CAR DETAILS</h5>
+    <div class="display_perview col-md-6" th:object="${car}">
+        <img th:src="@{${'/picture/'+car.id+'/'+car.frontImageUrl}}">
+        <img th:src="@{${'/picture/'+car.id+'/'+car.backImageUrl}}">
+        <img th:src="@{${'/picture/'+car.id+'/'+car.leftImageUrl}}">
+        <img th:src="@{${'/picture/'+car.id+'/'+car.rightImageUrl}}">
+
+    </div>
+    <div class="display_perview col-md-6" th:object="${car}">
+        <p>
+        <h5 th:utext="${car.showName()}"></h5>
+        <button type="button" class="btn btn-primary">Confirm deposit</button>
+        </p>
+        <p>
+            <label>Ratings</label>
+            <span class="fa fa-star checkedd"></span>
+            <span class="fa fa-star checkedd"></span>
+            <span class="fa fa-star checkedd"></span>
+            <span class="fa fa-star checkedd"></span>
+            <span class="fa fa-star"></span>
+        </p>
+        <p>No. of rides: 0</p>
+        <p>
+            <label>Price</label>
+            <div th:utext="${car.getPrice()}"></div>
+        </p>
+        <p>
+            <label>Location</label>
+            <div th:utext="${car.showAddress()}"></div>
+        </p>
+        <p>
+            <label>Status</label>
+            <select>
+                <option selected>Available</option>
+                <option>Stopped</option>
+            </select>
+        </p>
+    </div>
+
+
+</div>
+
+<!-- Javascript -->
+<script src="/assets/js/jquery-1.11.1.min.js"></script>
+<script src="/assets/boostrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
+        integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>
