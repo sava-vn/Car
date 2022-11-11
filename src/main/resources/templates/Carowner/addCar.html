@@ -62,21 +62,50 @@
       <p>
         Color
         <select oninput="this.className = ''" name="colorID">
-          <option selected="selected" value="1">Dark</option>
+          <option selected="selected" value="1">Black</option>
           <option value="2">Blue</option>
           <option value="3">Green</option>
           <option value="4">Gray</option>
           <option value="5">Red</option>
+          <option value="6">White</option>
+          <option value="7">Gold</option>
+          <option value="8">Orange</option>
+          <option value="9">Brown</option>
+          <option value="10">Silver</option>
+          <option value="11">Yellow</option>
         </select>
       </p>
       <p>
         Brand name
         <select oninput="this.className = ''" name="brandId">
-          <option selected="selected" value="1">Audi</option>
-          <option value="2">Mec</option>
-          <option value="3">Volvo</option>
-          <option value="4">Dugati</option>
-          <option value="5">Toyota</option>
+          <option selected="selected" value="1">Tesla</option>
+          <option value="2">BMW</option>
+          <option value="3">Ferrari</option>
+          <option value="4">Ford</option>
+          <option value="5">Porsche</option>
+          <option value="6">Honda</option>
+          <option value="7">Lamborghini</option>
+          <option value="8">Toyota</option>
+          <option value="9">Bentley</option>
+          <option value="10">Maserati</option>
+          <option value="11">Audi</option>
+          <option value="12">Subaru</option>
+          <option value="13">Hyundai</option>
+          <option value="14">Mazda</option>
+          <option value="15">Nissan</option>
+          <option value="16">Chevrolet</option>
+          <option value="17">Kia</option>
+          <option value="18">Mercedes-Benz</option>
+          <option value="19">Volkswagen</option>
+          <option value="20">Volvo</option>
+          <option value="21">Mitsubishi</option>
+          <option value="22">Peugeot</option>
+          <option value="23">Mini</option>
+          <option value="24">Land Rover</option>
+          <option value="25">Renault</option>
+          <option value="26">Daewoo</option>
+          <option value="27">MG</option>
+          <option value="28">VinFast</option>
         </select>
       </p>
       <p>
@@ -127,9 +156,9 @@
       </div>
       <div class="form-group">
         <label>Registration paper:</label>
-        <input type="file" name="registrationPaperUrl" accept="image/jpeg, image/png" id="target1">
+        <input type="file" name="registration" accept="image/jpeg, image/png" id="target1">
         <label >Certificate of inspection</label>
-        <input type="file" name="cetifiticateInspectionUrl" accept="image/jpeg, image/png" id="target2">
+        <input type="file" name="inspection" accept="image/jpeg, image/png" id="target2">
         <label >Insurance</label>
         <input type="file" name="insuranceUrl" accept="image/*" id="target3">
       </div>
@@ -150,25 +179,17 @@
         <input type="text" name="search" oninput="this.className = ''" class="form-text form-control"
                placeholder="Search for an address"/>
         <select class="custom-select" oninput=" this.className = ''" name="cityID">
-          <option selected="selected" value="1">Ha Noi</option>
-          <option value="2">Hai Phong</option>
-          <option value="3">TP.HCM</option>
-          <option value="4">Hai Duong</option>
-          <option value="5">Ha Long</option>
+          <option value="" selected="">Select Country</option>
         </select>
       </div>
       <div class="form-group">
         <select class="custom-select" name="districtID" oninput="this.className = ''">
-          <option selected="selected" value="1">Thanh Xuan</option>
-          <option value="2">Hai Ba Trung</option>
-          <option value="3">Ha Dong</option>
+          <option value="" selected="">Select District</option>
         </select>
       </div>
       <div class="form-group">
         <select class="custom-select" name="wardID" oninput="this.className = ''">
-          <option selected="selected" value="1">Thanh Xuan Trung</option>
-          <option value="2">Thanh Xuan Bac</option>
-          <option value="3">Thanh Xuan Nam</option>
+          <option value="" selected="">Select Ward</option>
         </select>
       </div>
       <div class="form-group">
@@ -203,6 +224,28 @@
           <input type="checkbox">
           <title>USB</title>
           <input type="checkbox">
+        </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <label>Insurance</label>
+          <input type="file" name="pfrontImageUrl" accept="image/jpeg, image/png" id="target4">
+          <img alt="Image show" id="thumbnail4">
+        </div>
+        <div>
+          <label>Insurance</label>
+          <input type="file" name="pbackImageUrl" accept="image/jpeg, image/png" id="target5">
+          <img alt="Image show" id="thumbnail5">
+        </div>
+        <div>
+          <label>Insurance</label>
+          <input type="file" name="pleftImageUrl" accept="image/jpeg, image/png" id="target6">
+          <img alt="Image show" id="thumbnail6">
+        </div>
+        <div>
+          <label>Insurance</label>
+          <input type="file" name="prightImageUrl" accept="image/jpeg, image/png" id="target7">
+          <img alt="Image show" id="thumbnail7">
         </div>
       </div>
       <!--            <div class="form-group">-->
@@ -262,6 +305,169 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
         integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+  //show image input
+  $(document).ready(function () {
+    $('#target1').change(function () {
+      showImageThumbnail1(this);
+    });
+    $('#target2').change(function () {
+      showImageThumbnail2(this);
+    });
+    $('#target3').change(function () {
+      showImageThumbnail3(this);
+    });
+    $('#target4').change(function () {
+      showImageThumbnail4(this);
+    });
+    $('#target5').change(function () {
+      showImageThumbnail5(this);
+    });
+    $('#target6').change(function () {
+      showImageThumbnail6(this);
+    });
+    $('#target7').change(function () {
+      showImageThumbnail7(this);
+    });
+  })
+
+  function showImageThumbnail1(fileInput) {
+    file = fileInput.files[0];
+    reader = new FileReader();
+
+    reader.onload = function (e) {
+      $('#thumbnail1').attr('src', e.target.result).show();
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function showImageThumbnail2(fileInput) {
+    file = fileInput.files[0];
+    reader = new FileReader();
+
+    reader.onload = function (e) {
+      $('#thumbnail2').attr('src', e.target.result).show();
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function showImageThumbnail3(fileInput) {
+    file = fileInput.files[0];
+    reader = new FileReader();
+
+    reader.onload = function (e) {
+      $('#thumbnail3').attr('src', e.target.result).show();
+    };
+    reader.readAsDataURL(file);
+  }
+  function showImageThumbnail4(fileInput) {
+    file = fileInput.files[0];
+    reader = new FileReader();
+
+    reader.onload = function (e) {
+      $('#thumbnail4').attr('src', e.target.result).show();
+    };
+    reader.readAsDataURL(file);
+  }
+  function showImageThumbnail5(fileInput) {
+    file = fileInput.files[0];
+    reader = new FileReader();
+
+    reader.onload = function (e) {
+      $('#thumbnail5').attr('src', e.target.result).show();
+    };
+    reader.readAsDataURL(file);
+  }
+  function showImageThumbnail6(fileInput) {
+    file = fileInput.files[0];
+    reader = new FileReader();
+
+    reader.onload = function (e) {
+      $('#thumbnail6').attr('src', e.target.result).show();
+    };
+    reader.readAsDataURL(file);
+  }
+  function showImageThumbnail7(fileInput) {
+    file = fileInput.files[0];
+    reader = new FileReader();
+
+    reader.onload = function (e) {
+      $('#thumbnail7').attr('src', e.target.result).show();
+    };
+    reader.readAsDataURL(file);
+  }
+
+  //json input car model
+  var brand = document.getElementById("brandID");
+  var model = document.getElementById("modelID");
+
+  var Parameter0 ={
+    url : "https://raw.githubusercontent.com/FormidableLabs/radon-typeahead/master/demo/car-models.json",
+    method : "GET",
+    responseType: "application/json",
+  };
+  var promises = axios(Parameter0);
+  promises.then(function (result) {
+    renderBrand (result.data);
+  });
+  function renderBrand(data) {
+    for(const x of data){
+      model.options[model.options.length] = new Option(x.brand, x.brand);
+    }
+    brand.onchange = function () {
+      model.length = 1;
+      if (this.value != "") {
+        const result = data.filter(n => n.models === this.value);
+
+        for (const k of result[0].Models) {
+          model.options[model.options.length] = new Option(k.models);
+        }
+      }
+    };
+  }
+  //json input location
+  var citis = document.getElementById("cityID");
+  var districts = document.getElementById("districtID");
+  var wards = document.getElementById("wardID");
+  var Parameter = {
+    url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
+    method: "GET",
+    responseType: "application/json",
+  };
+  var promise = axios(Parameter);
+  promise.then(function (result) {
+    renderCity(result.data);
+  });
+
+  function renderCity(data) {
+    for (const x of data) {
+      citis.options[citis.options.length] = new Option(x.Name, x.Name);
+    }
+    citis.onchange = function () {
+      districts.length = 1;
+      wards.length = 1;
+      if (this.value != "") {
+        const result = data.filter(n => n.Name === this.value);
+
+        for (const k of result[0].Districts) {
+          districts.options[districts.options.length] = new Option(k.Name, k.Name);
+        }
+      }
+    };
+    districts.onchange = function () {
+      wards.length = 1;
+      const dataCity = data.filter((n) => n.Name === citis.value);
+      if (this.value != "") {
+        const dataWards = dataCity[0].Districts.filter(n => n.Name === this.value)[0].Wards;
+
+        for (const w of dataWards) {
+          wards.options[wards.options.length] = new Option(w.Name, w.Name);
+        }
+      }
+    };
+  }
+
+</script>
 
 </body>
 </html>

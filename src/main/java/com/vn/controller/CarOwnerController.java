@@ -80,7 +80,7 @@ public class CarOwnerController {
 
         Car savecar = carService.saveCar(car);
 
-        String uploadDir = "./src/main/resources/static/assets/picture/" + savecar;
+        String uploadDir = "./src/main/resources/static/images/" + savecar;
 
         Path uploadPath = Paths.get(uploadDir);
 
