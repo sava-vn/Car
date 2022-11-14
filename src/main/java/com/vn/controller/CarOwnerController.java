@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -47,40 +49,39 @@ public class CarOwnerController {
     @PostMapping("/Add-Car")
     public String addCarForm(@ModelAttribute("car") Car car, Model model,
                              RedirectAttributes ra,
-                             @RequestParam("pregistrationPaperUrl") MultipartFile multipartFile1,
-                             @RequestParam("pcetifiticateInspectionUrl") MultipartFile multipartFile2,
+                             @RequestParam("pregistration") MultipartFile multipartFile1,
+                             @RequestParam("pinspection") MultipartFile multipartFile2,
                              @RequestParam("pinsuranceUrl") MultipartFile multipartFile3,
-                             @RequestParam("pfrontImageUrl") MultipartFile multipartFile4,
-                             @RequestParam("pbackImageUrl") MultipartFile multipartFile5,
-                             @RequestParam("pleftImageUrl") MultipartFile multipartFile6,
-                             @RequestParam("prightImageUrl") MultipartFile multipartFile7) throws IOException {
+                             @RequestParam("pimages") MultipartFile[] multipartFile4) throws IOException {
         Car carCheck = carService.findCarByLicensePlate(car.getLicensePlate());
         if (carCheck != null) {
             model.addAttribute("msg", "Car is already exits");
             return "Carowner/addCar";
         }
+        //Lay ten goc cua anh them vao car
         String registrationPaper = StringUtils.cleanPath(multipartFile1.getOriginalFilename());
         String cetifiticateInspection = StringUtils.cleanPath(multipartFile2.getOriginalFilename());
         String insurance = StringUtils.cleanPath(multipartFile3.getOriginalFilename());
 
-        String frontImageUrl = StringUtils.cleanPath(multipartFile4.getOriginalFilename());
-        String backImageUrl = StringUtils.cleanPath(multipartFile5.getOriginalFilename());
-        String leftImageUrl = StringUtils.cleanPath(multipartFile6.getOriginalFilename());
-        String rightImageUrl = StringUtils.cleanPath(multipartFile7.getOriginalFilename());
-
-
         car.setRegistration(registrationPaper);
         car.setInspection(cetifiticateInspection);
         car.setInsuranceUrl(insurance);
-        String images = frontImageUrl + ","
-                + backImageUrl +","
-                + leftImageUrl +","
-                + rightImageUrl;
-        car.setImages(images);
 
-        Car savecar = carService.saveCar(car);
 
-        String uploadDir = "./src/main/resources/static/images/" + savecar;
+        String[] carImages = new String[3];
+        for(MultipartFile listImages : multipartFile4){
+            String images = StringUtils.cleanPath(listImages.getOriginalFilename());
+            ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(carImages));
+            arrayList.add(images);
+            carImages = arrayList.toArray(carImages);
+        }
+        String saveCarImages = carImages.toString();
+
+        car.setImages(saveCarImages);
+
+        Car saveCars = carService.saveCar(car);
+
+        String uploadDir = "./src/main/resources/static/images/" + saveCars.getId();
 
         Path uploadPath = Paths.get(uploadDir);
 
@@ -109,35 +110,17 @@ public class CarOwnerController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try (InputStream inputStream = multipartFile4.getInputStream()) {
-            Path filePath = uploadPath.resolve(frontImageUrl);
-            System.out.println(filePath.toFile().getAbsolutePath());
-            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            e.printStackTrace();
+        for(MultipartFile listImages : multipartFile4){
+            String images = StringUtils.cleanPath(listImages.getOriginalFilename());
+            try (InputStream inputStream = listImages.getInputStream()) {
+                Path filePath = uploadPath.resolve(images);
+                System.out.println(filePath.toFile().getAbsolutePath());
+                Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        try (InputStream inputStream = multipartFile5.getInputStream()) {
-            Path filePath = uploadPath.resolve(backImageUrl);
-            System.out.println(filePath.toFile().getAbsolutePath());
-            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try (InputStream inputStream = multipartFile6.getInputStream()) {
-            Path filePath = uploadPath.resolve(leftImageUrl);
-            System.out.println(filePath.toFile().getAbsolutePath());
-            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            e.printStackTrace();
-            e.printStackTrace();
-        }
-        try (InputStream inputStream = multipartFile7.getInputStream()) {
-            Path filePath = uploadPath.resolve(rightImageUrl);
-            System.out.println(filePath.toFile().getAbsolutePath());
-            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         ra.addFlashAttribute("msg", "Your car add succesfull!");
         return "Carowner/homepagecarowner";
 

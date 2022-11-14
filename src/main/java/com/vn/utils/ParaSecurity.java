@@ -1,6 +1,4 @@
 package com.vn.utils;
-
-
 public class ParaSecurity {
     public static String[] ignoreSecurityPages = {
             "/forgot_password",
@@ -14,9 +12,13 @@ public class ParaSecurity {
             "/assets/boostrap/css/**",
             "/assets/boostrap/js/**",
             "/images/**",
-            "/search/car"
+            "/search/car",
+            "/editProfile",
+            "/Add-Car",
+            "/car/edit/{licensePlate}",
+            "/listCar",
+            "/page/{pageNumber}"
     };
-
     public static String[] customerPages ={
             "/home/",
             "/forgot_password",

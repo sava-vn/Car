@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="/assets/css/form-element.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style >
+    <style>
         .fa {
             font-size: 25px;
         }
@@ -63,15 +63,15 @@
     </p>
     <h5>EDIT CAR DETAILS</h5>
     <div class="display_perview col-md-6" th:object="${car}">
-        <img th:src="@{${'/picture/'+car.id+'/'+car.frontImageUrl}}">
-        <img th:src="@{${'/picture/'+car.id+'/'+car.backImageUrl}}">
-        <img th:src="@{${'/picture/'+car.id+'/'+car.leftImageUrl}}">
-        <img th:src="@{${'/picture/'+car.id+'/'+car.rightImageUrl}}">
+        <img th:src="@{${'/images/'+car.id+'/'+car.getImages()[0]}}">
+        <img th:src="@{${'/images/'+car.id+'/'+car.getImages()[1]}}">
+        <img th:src="@{${'/images/'+car.id+'/'+car.getImages()[2]}}">
+        <img th:src="@{${'/images/'+car.id+'/'+car.getImages()[3]}}">
 
     </div>
     <div class="display_perview col-md-6" th:object="${car}">
         <p>
-        <h5 th:utext="${car.showName()}"></h5>
+        <h5 th:utext="${car.getBrand()} +' '+ ${car.getModel()} +' '+ ${car.getYear()}"></h5>
         <button type="button" class="btn btn-primary">Confirm deposit</button>
         </p>
         <p>
@@ -85,11 +85,11 @@
         <p>No. of rides: 0</p>
         <p>
             <label>Price</label>
-            <div th:utext="${car.getPrice()}"></div>
+        <div th:utext="${car.getPrice()}"></div>
         </p>
         <p>
             <label>Location</label>
-            <div th:utext="${car.showAddress()}"></div>
+        <div th:utext="${car.street}  + ', '+${car.ward}+ ', '+ ${car.district} +', '+${car.city}"></div>
         </p>
         <p>
             <label>Status</label>
@@ -102,6 +102,46 @@
 
 
 </div>
+<div class="bar-seleted">
+    <button class="bar-button" onclick="openTab('Basic')">Basic Information</button>
+    <button class="bar-button" onclick="openTab('Details')">Details</button>
+    <button class="bar-button" onclick="openTab('Pricing')">Pricing</button>
+</div>
+<div class="tab" id="Basic">
+    <div>License plate</div>
+    <div th:utext="${car.licensePlate}"></div>
+    <div>Brand name</div>
+    <div th:utext="${car.brand}"></div>
+    <div>Production Year</div>
+    <div th:utext="${car.year}"></div>
+    <div>Transmission</div>
+    <div th:utext="${car.transmission}"></div>
+    <div>Document</div>
+    <div th:utext="${car.description}"></div>
+    <div>Color</div>
+    <div th:utext="${car.color}"></div>
+    <div>Model</div>
+    <div th:utext="${car.model}"></div>
+    <div>No. of seats</div>
+    <div th:utext="${car.seat}"></div>
+    <div>Fuel</div>
+    <div th:utext="${car.fuel}"></div>
+    <div>Deposit</div>
+    <div th:utext="${car.deposit}"></div>
+    <div>Booking No</div>
+    <div th:utext="${car.bookings}"></div>
+</div>
+<div class="tab" id="Details" style="display: none">
+    tab3
+    <form action="/edit-car" method="post" enctype="multipart/form-data">
+        <input name="mileage" type="number" placeholder="Mileage" th:utext="${car.mileage}">
+        <div>Address</div>
+    </form>
+</div>
+
+<div class="tab" id="Pricing" style="display: none">
+tab3
+</div>
 
 <!-- Javascript -->
 <script src="/assets/js/jquery-1.11.1.min.js"></script>
@@ -109,5 +149,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
         integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    function openTab(name) {
+        var i;
+        var x = document.getElementsByClassName("tab");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        document.getElementById(name).style.display = "block";
+    }
+</script>
 </body>
 </html>

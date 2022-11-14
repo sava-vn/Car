@@ -36,18 +36,16 @@ public class Car {
 	private String ward;
 	private String street;
 	private String description;
-	private Integer addFunction;
+	private String addFunction;
 	private String images;
 	private Double price;
 	private Double deposit;
-	private Integer term;
+	private String term;
 	private String termExtra;
 	private Double rating;
 
 	@OneToMany(mappedBy = "car")
 	private List<Booking> bookings;
 
-	public String showName(){
-		return "";
-	}
+
 }

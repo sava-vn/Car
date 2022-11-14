@@ -3,34 +3,33 @@
 }
 
 body {
-    background-color: #f1f1f1;
+    background-color: grey;
 }
 
 #regForm {
     background-color: #ffffff;
-    margin: 100px auto;
-    font-family: Raleway;
+    margin: auto;
     padding: 40px;
-    width: 70%;
-    min-width: 300px;
+    width: 90%;
+    min-width: 400px;
+    border-radius: 10px;
 }
 
 h1 {
     text-align: center;
 }
 
-input {
-    padding: 10px;
-    width: 100%;
-    font-size: 17px;
-    font-family: Raleway;
-    border: 1px solid #aaaaaa;
+select{
+    height: 40px;
+    margin-left: 50px;
+    margin-bottom: 8px;
+    width: 250px;
 }
 
 /* Mark input boxes that gets an error on validation: */
-input.invalid {
+/* input.invalid {
     background-color: #ffdddd;
-}
+} */
 
 /* Hide all steps by default: */
 .tab {
@@ -38,13 +37,13 @@ input.invalid {
 }
 
 button {
-    background-color: #04AA6D;
+    background-color: #1e8fc8;
     color: #ffffff;
     border: none;
     padding: 10px 20px;
     font-size: 17px;
-    font-family: Raleway;
     cursor: pointer;
+    border-radius: 5px;
 }
 .is-hidden {
     display: none;
@@ -58,12 +57,23 @@ button:hover {
     background-color: #bbbbbb;
 }
 
+.progressbar{
+    text-align: center;
+    background-color: #fff;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
 /* Make circles that indicate the steps of the form: */
 .step {
-    margin: 0 30px;
+    margin: 0 10px;
     background-color: #bbbbbb;
     border: solid black 1px;
     display: inline-block;
+    color: black;
+    border-radius: 10px;
+    padding: 8px 17px;
 }
 
 .step.active {
@@ -72,53 +82,58 @@ button:hover {
 
 /* Mark the steps that are finished and valid: */
 .step.finish {
-    background-color: #04AA6D;
+    background-color: #1e8fc8;
 }
 
-.drop-zone {
-    max-width: 200px;
-    height: 200px;
-    padding: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.tabinput input{
+    margin-bottom: 30px;
+    height: 40px;
+    width: 1000px;
+}
+.inputplate{
+    width: 80%;
+}
+
+.selectgroup{
+    display: block;
+    margin-right: 50px;
+}
+.selectchoice{
+    width: 250px;
+    height: 40px;
+    margin-bottom: 8px;
+    margin-left: 50px;
+    display: block;
+}
+.groupbetween{
+    display: inline-flex;
+}
+
+.btn-radio{
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 35px;
+    width: 100px;
+    margin-right: 15px;
+}
+
+.drop-zone{
+    max-width: 300px;
+    max-height: 400px;
+}
+.drop-zone input {
+    max-height: 55px;
+}
+.numberinput {
     text-align: center;
-    font-family: "Quicksand", sans-serif;
-    font-weight: 500;
-    font-size: 20px;
-    cursor: pointer;
-    color: #cccccc;
-    border: 4px dashed #009578;
-    border-radius: 10px;
 }
-
-.drop-zone--over {
-    border-style: solid;
+.locationinput select{
+    width: 250px;
+    height: 40px;
+    margin-bottom: 8px;
+    margin-left: 50px;
+    display: block;
 }
-
-.drop-zone__input {
-    display: none;
-}
-
-.drop-zone__thumb {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: #cccccc;
-    background-size: cover;
-    position: relative;
-}
-
-.drop-zone__thumb::after {
-    content: attr(data-label);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 5px 0;
-    color: #ffffff;
-    background: rgba(0, 0, 0, 0.75);
-    font-size: 14px;
+.locationinput input{
     text-align: center;
 }

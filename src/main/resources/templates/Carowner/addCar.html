@@ -11,42 +11,94 @@
   <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css"/>
   <link rel="stylesheet" href="/assets/css/form-element.css"/>
   <link rel="stylesheet" href="/assets/css/addCar.css">
+  <link rel="stylesheet" href="../../static/assets/css/font-awesome-pro.css"/>
+  <link rel="stylesheet" href="../../static/assets/css/form-element.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="../../static/assets/boostrap/css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="../../static/assets/boostrap/css/animated.css">
+
+  <link rel="stylesheet" href="../../static/assets/boostrap/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="../../static/assets/boostrap/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../../static/assets/boostrap/css/magnific-popup.css">
+
+  <link rel="stylesheet" href="../../static/assets/boostrap/css/aos.css">
+
+  <link rel="stylesheet" href="../../static/assets/boostrap/css/ionicons.min.css">
+
+  <link rel="stylesheet" href="../../static/assets/boostrap/css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="../../static/assets/boostrap/css/jquery.timepicker.css">
+
+
+  <link rel="stylesheet" href="/assets/boostrap/css/flaticon.css">
+  <link rel="stylesheet" href="/assets/boostrap/css/icomoon.css">
+  <link rel="stylesheet" href="/assets/boostrap/css/style.css">
+
+  <!-- ICON -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <link rel="stylesheet" href="/assets/css/home/home_customer.css">
+  <link rel="stylesheet" href="/assets/css/car/search_car.css">
+  <style>
+    .error {
+      color: red;
+    }
+  </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <div>
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<!--HEADER BEGIN-->
+<div class="home_customer_header">
+  <div class="home_customer_header_left">
+    <i class="fa-solid fa-car-side"></i>
+    <label>Rent a car today</label>
   </div>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <div class="form-inline my-2 my-lg-0">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
+  <nav class="home_customer_header_nav">
+    <li style="padding: 8px 32px">
+      <a href="#">About Us</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+         aria-expanded="false" style="padding: 8px 16px 8px 0px">
+        <img th:src="@{/images/person_1.jpg}"
+             style="width: 32px; height: 32px;border-radius: 50%">
+        <label>Wellcome sava</label>
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <li>
+          <a class="dropdown-item" href="/myProfile">
+            <i class="fa-solid fa-address-card"></i>
+            <label>My profile</label>
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
+        </li>
+        <li>
+          <a class="dropdown-item" href="myBooking">
+            <i class="fa-solid fa-list"></i>
+            <label>My Booking</label>
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="myWallet">
+            <i class="fa-solid fa-wallet"></i>
+            <label>My wallet</label>
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="/logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <label>Logout</label>
+          </a>
         </li>
       </ul>
-    </div>
-  </div>
-</nav>
+    </li>
+  </nav>
+</div>
+<!--HEADER END-->
 <div class="container">
-  <form action="/Add-Car" method="post" class="add-car-form-1" id="regForm" >
+  <form action="/Add-Car" method="post" class="add-car-form-1" id="regForm" enctype="multipart/form-data">
     <!-- Circles which indicates the steps of the form: -->
-    <div style="text-align:center">
+    <div class="progressbar">
       <span class="step">Basic</span>
       <span class="step">Details</span>
       <span class="step">Pricing</span>
@@ -55,140 +107,175 @@
     </div>
     <h1>Add a car:</h1>
     <div class="tab">
-      <p>
-        License plate:
-        <input oninput="this.className = ''" name="licensePlate">
+
+      <p class="tabinput">
+        <input placeholder="License plate" class="inputplate" oninput="this.className = ''" name="licensePlate">
       </p>
-      <p>
-        Color
-        <select oninput="this.className = ''" name="colorID">
-          <option selected="selected" value="1">Black</option>
-          <option value="2">Blue</option>
-          <option value="3">Green</option>
-          <option value="4">Gray</option>
-          <option value="5">Red</option>
-          <option value="6">White</option>
-          <option value="7">Gold</option>
-          <option value="8">Orange</option>
-          <option value="9">Brown</option>
-          <option value="10">Silver</option>
-          <option value="11">Yellow</option>
-        </select>
-      </p>
-      <p>
-        Brand name
-        <select oninput="this.className = ''" name="brandId">
-          <option selected="selected" value="1">Tesla</option>
-          <option value="2">BMW</option>
-          <option value="3">Ferrari</option>
-          <option value="4">Ford</option>
-          <option value="5">Porsche</option>
-          <option value="6">Honda</option>
-          <option value="7">Lamborghini</option>
-          <option value="8">Toyota</option>
-          <option value="9">Bentley</option>
-          <option value="10">Maserati</option>
-          <option value="11">Audi</option>
-          <option value="12">Subaru</option>
-          <option value="13">Hyundai</option>
-          <option value="14">Mazda</option>
-          <option value="15">Nissan</option>
-          <option value="16">Chevrolet</option>
-          <option value="17">Kia</option>
-          <option value="18">Mercedes-Benz</option>
-          <option value="19">Volkswagen</option>
-          <option value="20">Volvo</option>
-          <option value="21">Mitsubishi</option>
-          <option value="22">Peugeot</option>
-          <option value="23">Mini</option>
-          <option value="24">Land Rover</option>
-          <option value="25">Renault</option>
-          <option value="26">Daewoo</option>
-          <option value="27">MG</option>
-          <option value="28">VinFast</option>
-        </select>
-      </p>
-      <p>
-        Model
-        <select oninput="this.className = ''" name="modelId">
-          <option selected="selected" value="1">Low</option>
-          <option value="2">High</option>
-          <option value="3">Medium</option>
-          <option value="4">Custom</option>
-          <option value="5">Chicken</option>
-        </select>
-      </p>
-      <p>
-        Production year
-        <select oninput="this.className = ''" name="year">
-          <option selected="selected" value="2022">2022</option>
-          <option value="2019">2019</option>
-          <option value="2018">2018</option>
-          <option value="2017">2017</option>
-          <option value="2016">2016</option>
-        </select>
-      </p>
-      <p>
-        No. of seats
-        <select oninput="this.className = ''" name="seat">
-          <option selected="selected" value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-      </p>
-      <div class="form-group">
-        <input type="radio" oninput="this.className = ''" class="btn-check" name="transmission" id="option1"
-               autocomplete="off" value="1" checked>
-        <label class="btn btn-secondary" for="option1">Automatic</label>
-        <input type="radio" oninput="this.className = ''" class="btn-check" name="transmission" id="option2"
-               autocomplete="off" value="2">
-        <label class="btn btn-secondary" for="option2">Manual</label>
+      <div class="groupbetween">
+        <div class="selectgroup col-md-6">
+          <div>
+
+            <select oninput="this.className = ''" name="color" class="selectchoice">
+              <option selected value="">Color</option>
+              <option value="Black">Black</option>
+              <option value="Blue">Blue</option>
+              <option value="Green">Green</option>
+              <option value="Gray">Gray</option>
+              <option value="Red">Red</option>
+              <option value="White">White</option>
+              <option value="Gold">Gold</option>
+              <option value="Orange">Orange</option>
+              <option value="Brown">Brown</option>
+              <option value="Silver">Silver</option>
+              <option value="Yellow">Yellow</option>
+            </select>
+          </div>
+          <div>
+
+            <select oninput="this.className = ''" name="brand" class="selectchoice">
+              <option selected value="">Brand name</option>
+              <option value="Tesla">Tesla</option>
+              <option value="BMW">BMW</option>
+              <option value="Ferrari">Ferrari</option>
+              <option value="Ford">Ford</option>
+              <option value="Porsche">Porsche</option>
+              <option value="Honda">Honda</option>
+              <option value="Lamborghini">Lamborghini</option>
+              <option value="Toyota">Toyota</option>
+              <option value="Bentley">Bentley</option>
+              <option value="Maserati">Maserati</option>
+              <option value="Audi">Audi</option>
+              <option value="Subaru">Subaru</option>
+              <option value="Hyundai">Hyundai</option>
+              <option value="Mazda">Mazda</option>
+              <option value="Nissan">Nissan</option>
+              <option value="Chevrolet">Chevrolet</option>
+              <option value="Kia">Kia</option>
+              <option value="Mercedes-Benz">Mercedes-Benz</option>
+              <option value="Volkswagen">Volkswagen</option>
+              <option value="Volvo">Volvo</option>
+              <option value="Mitsubishi">Mitsubishi</option>
+              <option value="Peugeot">Peugeot</option>
+              <option value="Mini">Mini</option>
+              <option value="Land Rover">Land Rover</option>
+              <option value="Renault">Renault</option>
+              <option value="Daewoo">Daewoo</option>
+              <option value="MG">MG</option>
+              <option value="VinFast">VinFast</option>
+            </select>
+          </div>
+          <div>
+
+            <select oninput="this.className = ''" name="model" class="selectchoice">
+              <option selected value="">Model</option>
+              <option value="Low">Low</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Custom">Custom</option>
+              <option value="Chicken">Chicken</option>
+            </select>
+          </div>
+          <div>
+
+            <select oninput="this.className = ''" name="year" class="selectchoice">
+              <option selected value="">Production year</option>
+              <option value="2022">2022</option>
+              <option value="2019">2019</option>
+              <option value="2018">2018</option>
+              <option value="2017">2017</option>
+              <option value="2016">2016</option>
+            </select>
+          </div>
+          <div>
+
+            <select oninput="this.className = ''" name="seat" class="selectchoice">
+              <option selected value="">No. of seats</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="12">12</option>
+              <option value="16">16</option>
+              <option value="24">24</option>
+              <option value="32">32</option>
+            </select>
+          </div>
+        </div>
+        <div class="radiochoice col-md-6">
+          <div class="form-group">
+            <input type="radio" oninput="this.className = ''" class="btn-check btn-radio" name="transmission" id="option1"
+                   autocomplete="off" value="Automatic" checked hidden>
+            <label class="btn btn-radio" for="option1">Automatic</label>
+            <input type="radio" oninput="this.className = ''" class="btn-check btn-radio" name="transmission" id="option2"
+                   autocomplete="off" value="Manual" hidden>
+            <label class="btn btn-radio" for="option2">Manual</label>
+          </div>
+          <div class="form-group">
+            <input type="radio" oninput="this.className = ''" class="btn-check btn-radio" name="fule" id="option3"
+                   autocomplete="off" value="Gasoline" checked hidden>
+            <label class="btn btn-radio " for="option3">Gasoline</label>
+            <input type="radio" oninput="this.className = ''" class="btn-check btn-radio" name="fule" id="option4"
+                   autocomplete="off" value="Diesel" hidden>
+            <label class="btn btn-radio" for="option4">Diesel</label>
+
+
+
+
+
+
+
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <input type="radio" oninput="this.className = ''" class="btn-check" name="fule" id="option3"
-               autocomplete="off" value="1" checked>
-        <label class="btn btn-secondary" for="option3">Gasoline</label>
-        <input type="radio" oninput="this.className = ''" class="btn-check" name="fule" id="option4"
-               autocomplete="off" value="2">
-        <label class="btn btn-secondary" for="option4">Diesel</label>
-      </div>
-      <div class="form-group">
-        <label>Registration paper:</label>
-        <input type="file" name="registration" accept="image/jpeg, image/png" id="target1">
-        <label >Certificate of inspection</label>
-        <input type="file" name="inspection" accept="image/jpeg, image/png" id="target2">
-        <label >Insurance</label>
-        <input type="file" name="insuranceUrl" accept="image/*" id="target3">
+      <div class="form-group forminputimage d-flex justify-content-evenly">
+        <div class="drop-zone">
+          <label>Registration paper:</label>
+          <input type="file" name="pregistration" accept="image/jpeg, image/png" id="target1">
+          <img alt="" id="thumbnail1">
+
+        </div>
+        <div class="drop-zone">
+          <label >Certificate of inspection</label>
+          <input type="file" name="pinspection" accept="image/jpeg, image/png" id="target2">
+          <img alt="" id="thumbnail2">
+        </div>
+        <div class="drop-zone">
+          <label >Insurance</label>
+          <input type="file" name="pinsuranceUrl" accept="image/jpeg, image/png" id="target3">
+          <img alt="" id="thumbnail3">
+        </div>
+
+
       </div>
 
     </div>
     <div class="tab">
-      <div class="form-group">
-        Mileage:
-        <input type="number" oninput="this.className = ''" name="mileage">
-      </div>
-      <div class="form-group">
-        Fuel consumption
-        <input type="number" name="fuleConsumption" oninput="this.className = ''"/>
-        <div>liter/100km</div>
+      <div class="numberinput">
+        <div class="form-group">
+          <input placeholder="Mileage" type="number" oninput="this.className = ''" name="mileage">
+        </div>
+        <div class="form-group">
+          <input placeholder="Fuel consumption (liter/100km)" type="number" name="fuleConsumption" oninput="this.className = ''"/>
+        </div>
       </div>
       <div class="form-group">
         Address
-        <input type="text" name="search" oninput="this.className = ''" class="form-text form-control"
-               placeholder="Search for an address"/>
-        <select class="custom-select" oninput=" this.className = ''" name="cityID">
+
+        <select class="custom-select" oninput=" this.className = ''" name="city" id="cityID">
           <option value="" selected="">Select Country</option>
         </select>
       </div>
       <div class="form-group">
-        <select class="custom-select" name="districtID" oninput="this.className = ''">
+        <select class="custom-select" name="district" id="districtID" oninput="this.className = ''">
           <option value="" selected="">Select District</option>
         </select>
       </div>
       <div class="form-group">
-        <select class="custom-select" name="wardID" oninput="this.className = ''">
+        <select class="custom-select" name="ward" id="wardID" oninput="this.className = ''">
           <option value="" selected="">Select Ward</option>
         </select>
       </div>
@@ -204,60 +291,51 @@
       </div>
       <div class="form-group">
         <div class="checkboxgroup1">
-          <div>Bluetooth</div>
-          <input type="checkbox" checked>
-          <title>GPS</title>
-          <input type="checkbox">
-          <title>Camera</title>
-          <input type="checkbox">
+          Bluetooth
+          <input value="Bluetooth" class="fntchk" type="checkbox" >
+          GPS
+          <input value="GPS" class="fntchk"  type="checkbox">
+          Camera
+          <input value="Camera" class="fntchk"  type="checkbox">
         </div>
         <div class="checkboxgroup2">
-          <title>Sun roof</title>
-          <input type="checkbox" checked>
-          <title>Child lock</title>
-          <input type="checkbox">
-          <title>Child seat</title>
-          <input type="checkbox">
+          Sun roof
+          <input value="Sun roof" class="fntchk"  type="checkbox" >
+          Child lock
+          <input value="Child lock" class="fntchk"  type="checkbox">
+          Child seat
+          <input value="Child seat" class="fntchk"  type="checkbox">
         </div>
         <div class="checkboxgroup3">
-          <title>DVD</title>
-          <input type="checkbox">
-          <title>USB</title>
-          <input type="checkbox">
+          DVD
+          <input value="DVD" class="fntchk"  type="checkbox">
+          USB
+          <input value="USB" class="fntchk"  type="checkbox">
         </div>
+        <input name="addFunction" id="finalvalue" hidden>
       </div>
       <div class="form-group">
         <div>
           <label>Insurance</label>
-          <input type="file" name="pfrontImageUrl" accept="image/jpeg, image/png" id="target4">
+          <input type="file" name="pimages" accept="image/jpeg, image/png" id="target4">
           <img alt="Image show" id="thumbnail4">
         </div>
         <div>
           <label>Insurance</label>
-          <input type="file" name="pbackImageUrl" accept="image/jpeg, image/png" id="target5">
+          <input type="file" name="pimages" accept="image/jpeg, image/png" id="target5">
           <img alt="Image show" id="thumbnail5">
         </div>
         <div>
           <label>Insurance</label>
-          <input type="file" name="pleftImageUrl" accept="image/jpeg, image/png" id="target6">
+          <input type="file" name="pimages" accept="image/jpeg, image/png" id="target6">
           <img alt="Image show" id="thumbnail6">
         </div>
         <div>
           <label>Insurance</label>
-          <input type="file" name="prightImageUrl" accept="image/jpeg, image/png" id="target7">
+          <input type="file" name="pimages" accept="image/jpeg, image/png" id="target7">
           <img alt="Image show" id="thumbnail7">
         </div>
       </div>
-      <!--            <div class="form-group">-->
-      <!--                <label for="">Front</label>-->
-      <!--                <input type="file" name="registrationPaperUrl" accept="image/*" id="target4">-->
-      <!--                <label for="">Back</label>-->
-      <!--                <input type="file" name="registrationPaperUrl" accept="image/*" id="target5">-->
-      <!--                <label for="">Left</label>-->
-      <!--                <input type="file" name="registrationPaperUrl" accept="image/*" id="target6">-->
-      <!--                <label for="">Right</label>-->
-      <!--                <input type="file" name="registrationPaperUrl" accept="image/*" id="target7">-->
-      <!--            </div>-->
     </div>
     <div class="tab">
       <div>
@@ -270,12 +348,13 @@
       </div>
       <div>
         Terms of use
-        <input type="checkbox" name="term" oninput="this.className = ''" value="1">No smoking
-        <input type="checkbox" name="term" oninput="this.className = ''" value="2">No food in car
-        <input type="checkbox" name="term" oninput="this.className = ''" value="3">No Pet
-        <input type="checkbox" name="" oninput="this.className = ''" value="Other" id="toggle">Other
+        <input type="checkbox" class="fntchk2" oninput="this.className = ''" value="No smoking">No smoking
+        <input type="checkbox" class="fntchk2" oninput="this.className = ''" value="No food in car">No food in car
+        <input type="checkbox" class="fntchk2" oninput="this.className = ''" value="No Pet">No Pet
+        <input name="term" id="finalvalue2">
+        <input type="checkbox" name="" oninput="this.className = ''" value="Other" id="toggle" onclick="opennewtab()">Other
         <div id="content" class="is-hidden">
-          <label>Please sprcify:</label>
+          <label>Please specify:</label>
           <textarea name="termExtra" cols="30" rows="10"
                     oninput="this.className = ''"></textarea>
         </div>
@@ -297,14 +376,111 @@
 
 
 </div>
+<!--FOOTER BEGIN-->
+<footer class="ftco-footer ftco-bg-dark ftco-section">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md">
+        <div class="ftco-footer-widget mb-4">
+          <h2 class="ftco-heading-2"><a href="#" class="logo">Car<span>Rental</span></a></h2>
+          <p><a href="#">Search Cars And Rates</a></p>
+          <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+            <li class="ftco-animate">
+              <a href="#">
+                             <span>
+                                 <i class="fa-brands fa-square-facebook"></i>
+                             </span>
+              </a></li>
+            <li class="ftco-animate justify-content-center">
+              <a href="#">
+                              <span>
+                                  <i class="fa-brands fa-square-twitter"></i>
+                              </span>
+              </a>
+            </li>
+            <li class="ftco-animate justify-content-center">
+              <a href="#">
+                              <span>
+                                  <i class="fa-brands fa-square-instagram"></i>
+                              </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="ftco-footer-widget mb-4 ml-md-5">
+          <h2 class="ftco-heading-2">CUSTOMER ACCESS</h2>
+          <ul class="list-unstyled">
+            <li><a href="#" class="py-2 d-block">Manage My Booking</a></li>
+            <li><a href="#" class="py-2 d-block">My Wallet</a></li>
+            <li><a href="#" class="py-2 d-block">My Car</a></li>
+            <li><a href="#" class="py-2 d-block">Log in</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="ftco-footer-widget mb-4">
+          <h2 class="ftco-heading-2">JOIN US</h2>
+          <ul class="list-unstyled">
+            <li><a href="#" class="py-2 d-block">New User Sign Up</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="ftco-footer-widget mb-4">
+          <h2 class="ftco-heading-2">HAVE A QUESTION?</h2>
+          <div class="block-23 mb-3">
+            <ul>
+              <a href="#">
+                <i class="fa-solid fa-phone"></i>
+                <span class="text">369 Duy Tan, Cau Giay, Ha Noi, Viet Nam</span>
+              </a>
+              <li>
+                <a href="#">
+                  <i class="fa-solid fa-phone"></i>
+                  <span class="text">+1900 0091</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa-solid fa-envelope"></i>
+                  <span class="text">carrental@support.com</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!--FOOTER END-->
 
 <script src="/assets/js/addCar.js"></script>
+<script src="../../static/assets/js/login.js"></script>
+<script src="../../static/assets/js/signup.js"></script>
+<script src="../../static/assets/boostrap/js/jquery.min.js"></script>
+<script src="../../static/assets/boostrap/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="../../static/assets/boostrap/js/popper.min.js"></script>
+<script src="../../static/assets/boostrap/js/bootstrap.min.js"></script>
+<script src="../../static/assets/boostrap/js/jquery.easing.1.3.js"></script>
+<script src="../../static/assets/boostrap/js/jquery.waypoints.min.js"></script>
+<script src="../../static/assets/boostrap/js/jquery.stellar.min.js"></script>
+<script src="../../static/assets/boostrap/js/owl.carousel.min.js"></script>
+<script src="../../static/assets/boostrap/js/jquery.magnific-popup.min.js"></script>
+<script src="../../static/assets/boostrap/js/aos.js"></script>
+<script src="../../static/assets/boostrap/js/jquery.animateNumber.min.js"></script>
+<script src="../../static/assets/boostrap/js/bootstrap-datepicker.js"></script>
+<script src="../../static/assets/boostrap/js/jquery.timepicker.min.js"></script>
+<script src="../../static/assets/boostrap/js/scrollax.min.js"></script>
 <!-- Javascript -->
 <script src="/assets/js/jquery-1.11.1.min.js"></script>
 <script src="/assets/boostrap/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
         integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 <script type="text/javascript">
   //show image input
   $(document).ready(function () {
@@ -329,7 +505,8 @@
     $('#target7').change(function () {
       showImageThumbnail7(this);
     });
-  })
+
+  });
 
   function showImageThumbnail1(fileInput) {
     file = fileInput.files[0];
@@ -398,8 +575,8 @@
   }
 
   //json input car model
-  var brand = document.getElementById("brandID");
-  var model = document.getElementById("modelID");
+  var brand = document.getElementById("brand");
+  var model = document.getElementById("model");
 
   var Parameter0 ={
     url : "https://raw.githubusercontent.com/FormidableLabs/radon-typeahead/master/demo/car-models.json",
@@ -412,7 +589,7 @@
   });
   function renderBrand(data) {
     for(const x of data){
-      model.options[model.options.length] = new Option(x.brand, x.brand);
+      brand.options[brand.options.length] = new Option(x.brand, x.brand);
     }
     brand.onchange = function () {
       model.length = 1;
@@ -420,13 +597,13 @@
         const result = data.filter(n => n.models === this.value);
 
         for (const k of result[0].Models) {
-          model.options[model.options.length] = new Option(k.models);
+          model.options[model.options.length] = new Option(k.model, k.model);
         }
       }
     };
   }
   //json input location
-  var citis = document.getElementById("cityID");
+  var cities = document.getElementById("cityID");
   var districts = document.getElementById("districtID");
   var wards = document.getElementById("wardID");
   var Parameter = {
@@ -441,9 +618,9 @@
 
   function renderCity(data) {
     for (const x of data) {
-      citis.options[citis.options.length] = new Option(x.Name, x.Name);
+      cities.options[cities.options.length] = new Option(x.Name, x.Name);
     }
-    citis.onchange = function () {
+    cities.onchange = function () {
       districts.length = 1;
       wards.length = 1;
       if (this.value != "") {
@@ -456,7 +633,7 @@
     };
     districts.onchange = function () {
       wards.length = 1;
-      const dataCity = data.filter((n) => n.Name === citis.value);
+      const dataCity = data.filter((n) => n.Name === cities.value);
       if (this.value != "") {
         const dataWards = dataCity[0].Districts.filter(n => n.Name === this.value)[0].Wards;
 
@@ -466,7 +643,33 @@
       }
     };
   }
-
+  
+  $(document).ready(function () {
+    $('.fntchk').click(function () {
+      var selected = $('.fntchk:checked').map(function () {
+        return $(this).attr('value');
+      }).get().join(',');
+      $('#finalvalue').val(selected);
+    });
+  });
+  $(document).ready(function () {
+    $('.fntchk2').click(function () {
+      var selected = $('.fntchk2:checked').map(function () {
+        return $(this).attr('value');
+      }).get().join(',');
+      $('#finalvalue2').val(selected);
+    });
+  });
+  function opennewtab(){
+    var selectedCheckbox = document.getElementById("toggle");
+    var showBox = document.getElementById("content");
+    if(selectedCheckbox.checked == true){
+      showBox.style.display = "block";
+    }
+    else{
+      showBox.style.display = "none";
+    }
+  }
 </script>
 
 </body>
