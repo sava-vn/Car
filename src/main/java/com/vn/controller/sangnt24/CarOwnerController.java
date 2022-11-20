@@ -42,7 +42,9 @@ public class CarOwnerController {
                               @RequestParam("sort") Optional<String> sort) {
 
         CustomUserDetails detail = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("fullName", detail.getFullName());
+        Member m = new Member();
+        m.setFullName(detail.getUsername());
+        model.addAttribute("user", m);
 
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(5);
@@ -97,68 +99,78 @@ public class CarOwnerController {
     }
 
     // Add Car
-//    @GetMapping("/addCar")
-//    public String addContentUi(Model model, HttpSession session) {
-//        // Check role Car Owner
-//        CustomUserDetails detail = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        model.addAttribute("fullName", detail.getFullName());
-//
-//        model.addAttribute("addCar", new Car());
-//        model.addAttribute("carStatus", CarStatusEnum.values());
-//        return "/car/addCar";
-//    }
-//
-//
-//    @PostMapping("/addCar")
-//    public String checkAddCar(@Valid @ModelAttribute("addCar") Car car, BindingResult result,
-//                              HttpSession session, Model model, RedirectAttributes redirectAttributes) {
-//        // Validate Add Car
-//        if (result.hasErrors()) {
-//            return "/car/addCar";
-//        }
-//
-//        CustomUserDetails detail = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        model.addAttribute("fullName", detail.getFullName());
-//
-//        Member member = memberService.findById(detail.getId());
-//        car.setMember(member);
-//
-//        carService.saveCar(car);
-//        model.addAttribute("carStatus", CarStatusEnum.values());
-//        redirectAttributes.addFlashAttribute("message", "AddCar is susscessfull");
-//        return "redirect:/listCar";
-//    }
-//
-//    // Edit Car
-//    @GetMapping("/editCar/{id}")
-//    public String editCar(Model model, @PathVariable("id") Integer idCar, HttpSession session) {
-//        CustomUserDetails detail = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        model.addAttribute("fullName", detail.getFullName());
-//
-//        Car car = carService.findByIdCar(idCar);
-//
-//        model.addAttribute("carStatus", CarStatusEnum.values());
-//        model.addAttribute("editCar", car);
-//        return "/car/editCar";
-//    }
-//
-//    @PostMapping("/editCar")
-//    public String editContentById(@ModelAttribute("editCar") Car car,
-//                                  Model model, RedirectAttributes redirectAttributes) {
-//
-//        // Edit Car by email Member (role: Car owner)
-//        CustomUserDetails detail = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        model.addAttribute("fullName", detail.getFullName());
-//
-//        Car editCar = carService.findByIdCar(car.getId());
-//        editCar.setPrice(car.getPrice());
-//        editCar.setDeposit(car.getDeposit());
-//        editCar.setStatus(car.getStatus());
-//
-//        carService.update(editCar);
-//        redirectAttributes.addFlashAttribute("message", "Edit car sucessfull");
-//        return "redirect:/listCar";
-//    }
+    @GetMapping("/addCar")
+    public String addContentUi(Model model, HttpSession session) {
+        // Check role Car Owner
+        CustomUserDetails detail = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        Member m = new Member();
+        m.setFullName(detail.getUsername());
+        model.addAttribute("user", m);
+
+        model.addAttribute("addCar", new Car());
+        model.addAttribute("carStatus", CarStatusEnum.values());
+        return "/car/addCar";
+    }
+
+
+    @PostMapping("/addCar")
+    public String checkAddCar(@Valid @ModelAttribute("addCar") Car car, BindingResult result,
+                              HttpSession session, Model model, RedirectAttributes redirectAttributes) {
+        // Validate Add Car
+        if (result.hasErrors()) {
+            return "/car/addCar";
+        }
+        CustomUserDetails detail = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Member m = new Member();
+        m.setFullName(detail.getUsername());
+        model.addAttribute("user", m);
+
+        Member member = memberService.findById(detail.getId());
+        car.setMember(member);
+
+        carService.saveCar(car);
+        model.addAttribute("carStatus", CarStatusEnum.values());
+        redirectAttributes.addFlashAttribute("message", "AddCar is susscessfull");
+        return "redirect:/listCar";
+    }
+
+    // Edit Car
+    @GetMapping("/editCar/{id}")
+    public String editCar(Model model, @PathVariable("id") Integer idCar, HttpSession session) {
+        CustomUserDetails detail = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        Member m = new Member();
+        m.setFullName(detail.getUsername());
+        model.addAttribute("user", m);
+
+        Car car = carService.findByIdCar(idCar);
+
+        model.addAttribute("carStatus", CarStatusEnum.values());
+        model.addAttribute("editCar", car);
+        return "/car/editCar";
+    }
+
+    @PostMapping("/editCar")
+    public String editContentById(@ModelAttribute("editCar") Car car,
+                                  Model model, RedirectAttributes redirectAttributes) {
+
+        // Edit Car by email Member (role: Car owner)
+        CustomUserDetails detail = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        Member m = new Member();
+        m.setFullName(detail.getUsername());
+        model.addAttribute("user", m);
+
+        Car editCar = carService.findByIdCar(car.getId());
+        editCar.setPrice(car.getPrice());
+        editCar.setDeposit(car.getDeposit());
+        editCar.setStatus(car.getStatus());
+
+        carService.update(editCar);
+        redirectAttributes.addFlashAttribute("message", "Edit car sucessfull");
+        return "redirect:/listCar";
+    }
 
     // Delete Car
     @GetMapping("/deleteCar/{id}")

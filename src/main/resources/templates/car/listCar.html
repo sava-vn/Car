@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!--    FONT-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
           rel="stylesheet">
 
@@ -23,27 +24,11 @@
     <link rel="stylesheet" href="/assets/css/car/car_search.css">
     <link rel="stylesheet" href="/assets/css/car/car_item.css">
     <link rel="stylesheet" href="/assets/css/car/car_detail.css">
-
-
-    <link rel="stylesheet" href="/assets/css/form-element.css"/>
-    <link rel="stylesheet" href="/assets/css/style.css"/>
-    <link rel="stylesheet" href="/assets/boostrap/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/boostrap/css/animated.css">
-    <link rel="stylesheet" href="/assets/boostrap/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/assets/boostrap/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="/assets/boostrap/css/magnific-popup.css">
-    <link rel="stylesheet" href="/assets/boostrap/css/aos.css">
-    <link rel="stylesheet" href="/assets/boostrap/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="/assets/boostrap/css/jquery.timepicker.css">
-    <link rel="stylesheet" href="/assets/boostrap/css/style.css">
-    <link rel="stylesheet" href="/assets/css/fragment/header.css">
-    <link rel="stylesheet" href="/assets/css/fragment/search.css">
-
 </head>
 
 <body>
 
-<div th:insert="~{/fragment/header::menu2(${fullName})}">
+<div th:insert="~{/fragment/header::menu(${user})}">
 </div>
 
 <div style="margin:32px">
@@ -53,7 +38,8 @@
 
 <div class="list_car_header">
     <div class="car_action" style="display: flex; align-items: center">
-        <a href="/Add-Car" class="btn btn-primary ">Add Car</a>
+        <a href="/addCar" class="btn btn-primary ">Add Car</a>
+        <a href="/Add-Car" class="btn btn-primary ">Test Add Car</a>
         <p style="color: black">Total Elements <span th:text="${resultPage.getTotalElements()}"></span> cars</p>
     </div>
     <div style="display: flex; align-items: center">
@@ -141,7 +127,8 @@
                     </div>
                 </div>
                 <div class="car_action">
-                    <a class="btn btn-primary" th:href="@{/car/edit/{id}(id=${list.id})}">View details</a>
+                    <a class="btn btn-primary" th:href="@{/editCar/{id}(id=${list.id})}">View details</a>
+                    <a class="btn btn-primary" th:href="@{/car/edit/{id}(id=${list.id})}">Edit car</a>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#confirmDedete">
                         Delete
@@ -209,27 +196,31 @@
     </div>
 </div>
 
+<div class="modal fade" id="modalID" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-body" th:insert="~{/fragment/detailCar::car_detail}">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Exit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JQUERY -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+<!--JS-->
 <script src="/assets/js/search_car.js"></script>
-<script src="/assets/boostrap/js/jquery.min.js"></script>
-<script src="/assets/boostrap/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="/assets/boostrap/js/popper.min.js"></script>
-<script src="/assets/boostrap/js/bootstrap.min.js"></script>
-<script src="/assets/boostrap/js/jquery.easing.1.3.js"></script>
-<script src="/assets/boostrap/js/jquery.waypoints.min.js"></script>
-<script src="/assets/boostrap/js/jquery.stellar.min.js"></script>
-<script src="/assets/boostrap/js/owl.carousel.min.js"></script>
-<script src="/assets/boostrap/js/jquery.magnific-popup.min.js"></script>
-<script src="/assets/boostrap/js/aos.js"></script>
-<script src="/assets/boostrap/js/jquery.animateNumber.min.js"></script>
-<script src="/assets/boostrap/js/bootstrap-datepicker.js"></script>
-<script src="/assets/boostrap/js/jquery.timepicker.min.js"></script>
-<script src="/assets/boostrap/js/scrollax.min.js"></script>
-<script src="/assets/boostrap/js/main.js"></script>
-<script src="/assets/js/jquery-1.11.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
-        integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="/assets/js/login.js"></script>
-<script src="/assets/js/signup.js"></script>
+
 </body>
 </html>

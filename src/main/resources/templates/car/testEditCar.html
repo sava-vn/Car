@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Add Car</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500"/>
+    <link rel="stylesheet" href="/assets/boostrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="/assets/css/form-element.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .fa {
+            font-size: 25px;
+        }
+        .checkedd {
+            color: orange;
+        }
+    </style>
+</head>
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+<div class="container">
+    <p th:utext="${complete}"></p>
+    <p class="link">
+        <a href="/homepagecarowner">Home</a>
+        <a href="/List-Car">My Car</a>
+        <a href="#">Edit details</a>
+    </p>
+    <h5>EDIT CAR DETAILS</h5>
+    <!--    <div class="display_perview col-md-6" th:object="${car}">-->
+    <!--        <img th:src="@{${'/images/'+car.id+'/'+car.getImages()[0]}}">-->
+    <!--        <img th:src="@{${'/images/'+car.id+'/'+car.getImages()[1]}}">-->
+    <!--        <img th:src="@{${'/images/'+car.id+'/'+car.getImages()[2]}}">-->
+    <!--        <img th:src="@{${'/images/'+car.id+'/'+car.getImages()[3]}}">-->
+    <!--    </div>-->
+    <div class="display_perview col-md-6" th:object="${car}">
+        <p>
+        <h5 th:utext="${car.getBrand()} +' '+ ${car.getModel()} +' '+ ${car.getYear()}"></h5>
+        <button type="button" class="btn btn-primary">Confirm deposit</button>
+        </p>
+        <p>
+            <label>Ratings</label>
+            <span class="fa fa-star checkedd"></span>
+            <span class="fa fa-star checkedd"></span>
+            <span class="fa fa-star checkedd"></span>
+            <span class="fa fa-star checkedd"></span>
+            <span class="fa fa-star"></span>
+        </p>
+        <p>No. of rides: 0</p>
+        <p>
+            <label>Price</label>
+        <div th:utext="${car.getPrice()}"></div>
+        </p>
+        <p>
+            <label>Location</label>
+        <div th:utext="${car.street}  + ', '+${car.ward}+ ', '+ ${car.district} +', '+${car.city}"></div>
+        </p>
+        <p>
+            <label>Status</label>
+            <select>
+                <option selected>Available</option>
+                <option>Stopped</option>
+            </select>
+        </p>
+    </div>
+</div>
+<div class="bar-seleted">
+    <button class="bar-button" onclick="openTab('Basic')">Basic Information</button>
+    <button class="bar-button" onclick="openTab('Details')">Details</button>
+    <button class="bar-button" onclick="openTab('Pricing')">Pricing</button>
+</div>
+<div class="tab" id="Basic">
+    tab1
+    <div>License plate</div>
+    <div th:utext="${car.licensePlate}"></div>
+    <div>Brand name</div>
+    <div th:utext="${car.brand}"></div>
+    <div>Production Year</div>
+    <div th:utext="${car.year}"></div>
+    <div>Transmission</div>
+    <div th:utext="${car.transmission}"></div>
+    <div>Document</div>
+    <div th:utext="${car.description}"></div>
+    <div>Color</div>
+    <div th:utext="${car.color}"></div>
+    <div>Model</div>
+    <div th:utext="${car.model}"></div>
+    <div>No. of seats</div>
+    <div th:utext="${car.seat}"></div>
+    <div>Fuel</div>
+    <div th:utext="${car.fuel}"></div>
+    <div>Deposit</div>
+    <div th:utext="${car.deposit}"></div>
+    <div>Booking No</div>
+    <div th:utext="${car.bookings}"></div>
+</div>
+<form th:action="@{/car/edit/{id}(id=${car.id})}" method="post" enctype="multipart/form-data">
+<!--    <input path="id" type="hidden" id="id" name="id" th:field="*{id}"/>-->
+    <div class="tab" id="Details" style="display: none">
+        tab2
+        <table>
+            <tr class="infomation_hidden" style="display: none">
+                <td>
+                    <input name="id" th:field="${car.id}">
+                    <input name="brand" th:field="${car.brand}">
+                    <input name="color" th:field="${car.color}">
+                    <input name="fuel" th:field="${car.fuel}">
+                    <input name="licensePlate" th:field="${car.licensePlate}">
+                    <input name="model" th:field="${car.model}">
+                    <input name="seat" th:field="${car.seat}">
+                    <input name="year" th:field="${car.year}">
+                    <input name="transmission" th:field="${car.transmission}">
+                    <input name="images" th:field="${car.images}">
+                    <input name="inspection" th:field="${car.inspection}">
+                    <input name="insuranceUrl" th:field="${car.insuranceUrl}">
+                    <input name="registration" th:field="${car.registration}">
+                    <input name="member" th:field="${car.member}">
+
+                </td>
+            </tr>
+            <tr>
+                <td>Mileage</td>
+                <td><input name="mileage" type="number" placeholder="Mileage" th:field="${car.mileage}"></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>
+                    <select class="custom-select" name="city" id="cityID">
+                        <option>Select City</option>
+                    </select>
+                    <p id="my_city" th:text="${car.city}" hidden></p>
+                </td>
+                <td>
+                    <select class="custom-select" name="district" id="districtID">
+                        <option>Select District</option>
+                    </select>
+                    <p id="my_district" th:text="${car.district}" hidden></p>
+                </td>
+                <td>
+                    <select class="custom-select" name="ward" id="wardID">
+                        <option>Select ward</option>
+                    </select>
+                    <p id="my_ward" th:text="${car.ward}" hidden></p>
+                </td>
+                <td>
+                    <input type="text" name="street" class="form-text form-control"
+                           placeholder="House number, Street" th:field="${car.street}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Fuel consumption:
+                </td>
+                <td>
+                    <input th:field="${car.fuelConsumption}" type="number" name="fuelConsumption">
+                </td>
+                <td>
+                    litter/100km
+                </td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>
+                    <textarea th:field="${car.description}" name="description" class="form-control"
+                              id="exampleFormControlTextarea1" rows="10"
+                              placeholder="Description of your vehicle"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Bluetooth
+                    <input type="checkbox" class="fntchk" value="BLUETOOTH" th:checked="${car.addFunction.contains('BLUETOOTH')}">
+                    GPS<input type="checkbox" class="fntchk" value="GPS" th:checked="${car.addFunction.contains('GPS')}">
+                    Camera<input type="checkbox" class="fntchk" value="CAMERA" th:checked="${car.addFunction.contains('CAMERA')}">
+                </td>
+                <td>
+                    Sun roof<input type="checkbox" class="fntchk" value="SUNROOF" th:checked="${car.addFunction.contains('SUNROOF')}">
+                    Child lock<input type="checkbox" class="fntchk" value="CHILDLOCK" th:checked="${car.addFunction.contains('CHILDLOCK')}">
+                    Child seat<input type="checkbox" class="fntchk" value="CHILDSEAT" th:checked="${car.addFunction.contains('CHILDSEAT')}">
+                </td>
+                <td>
+                    DVD<input type="checkbox" class="fntchk" value="DVD" th:checked="${car.addFunction.contains('DVD')}">
+                    USB<input type="checkbox" class="fntchk" value="USB" th:checked="${car.addFunction.contains('USB')}">
+                    <input name="addFunction" id="finalvalue" th:field="${car.addFunction}" hidden>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="tab" id="Pricing" style="display: none">
+        tab3
+        <table>
+            <tr>
+                <td>
+                    Base price
+                </td>
+                <td>
+                    <input type="number" name="price" th:field="${car.price}">
+                </td>
+                <td>
+                    VND/Day
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Required deposit
+                </td>
+                <td>
+                    <input type="number" name="deposit" th:field="${car.deposit}">
+                </td>
+                <td>
+                    VND
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Term of use
+                </td>
+                <td>
+                    Child seat<input type="checkbox" class="fntchk" value="CHILDSEAT" th:checked="${car.addFunction.contains('CHILDSEAT')}">
+                    <input type="checkbox" class="fntchk2" value="NOSMOKING" th:checked="${car.term.contains('NOSMOKING')}">No smoking
+                    <input type="checkbox" class="fntchk2" value="NOFOODINCAR" th:checked="${car.term.contains('NOFOODINCAR')}">No food in car
+                    <input type="checkbox" class="fntchk2" value="NOPET" th:checked="${car.term.contains('NOPET')}">No Pet
+                    <input name="term" id="finalvalue2" th:field="${car.term}" hidden>
+                    <input type="checkbox" name="" oninput="this.className = ''" value="Other" id="toggle"
+                           onclick="opennewtab()">Other
+                    <div id="content" class="is-hidden" style="display: none">
+                        <label>Please specify:</label>
+                        <textarea th:field="${car.termExtra}" name="termExtra" cols="30" rows="10"
+                                  oninput="this.className = ''"></textarea>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+<p name="complete" class="complete"></p>
+<!-- Javascript -->
+<script src="/assets/js/jquery-1.11.1.min.js"></script>
+<script src="/assets/boostrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
+        integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+    //switch tab
+    function openTab(name) {
+        var i;
+        var x = document.getElementsByClassName("tab");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        document.getElementById(name).style.display = "block";
+    }
+    //json input location
+    var cities = document.getElementById("cityID");
+    var districts = document.getElementById("districtID");
+    var wards = document.getElementById("wardID");
+    var Parameter = {
+        url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
+        method: "GET",
+        responseType: "application/json",
+    };
+    var promise = axios(Parameter);
+    promise.then(function (result) {
+        renderCity(result.data);
+    });
+    function renderCity(data) {
+        for (const c of data) {
+            let option1 = new Option(c.Name, c.Name);
+            cities.options[cities.options.length] = option1;
+            if (c.Name === $("#my_city").text()) {
+                option1.selected = true;
+            }
+        }
+        renderDistrict(data,$("#my_city").text(),1);
+        renderWard(data, $("#my_city").text(), $("#my_district").text(),1)
+        cities.onchange = function () {
+            renderDistrict(data,this.value,2)
+        };
+        districts.onchange = function () {
+            renderWard(data,cities.value, this.value,2);
+        }
+    }
+    function renderDistrict(data, cityName, type){
+        districts.length = 1;
+        wards.length = 1;
+        if (cityName != "") {
+            const result = data.filter(n => n.Name === cityName);
+            if(type==2){
+                districts.options[0].selected = true;
+            }
+            for (const k of result[0].Districts) {
+                let option2 =new Option(k.Name, k.Name);
+                districts.options[districts.options.length] = option2;
+                if (type==1 && k.Name === $("#my_district").text()) {
+                    option2.selected = true;
+                }
+            }
+        }
+    }
+    function renderWard(data, cityName,districtName, type){
+        wards.length=1;
+        const dataCity = data.filter(n => n.Name === cityName);
+        if(districtName !=""){
+            const dataWards = dataCity[0].Districts.filter(n => n.Name === districtName)[0].Wards;
+            if(type==2){
+                wards.options[0].selected = true;
+            }
+            for (const w of dataWards) {
+                let option3 =new Option(w.Name, w.Name);
+                wards.options[wards.options.length] = option3;
+                if (type ==1 && w.Name === $("#my_ward").text()) {
+                    option3.selected = true;
+                }
+            }
+        }
+    }
+    //save value checkbox
+    $(document).ready(function () {
+        $('.fntchk').click(function () {
+            var selected = $('.fntchk:checked').map(function () {
+                return $(this).attr('value');
+            }).get().join(',');
+            $('#finalvalue').val(selected);
+        });
+    });
+    $(document).ready(function () {
+        $('.fntchk2').click(function () {
+            var selected = $('.fntchk2:checked').map(function () {
+                return $(this).attr('value');
+            }).get().join(',');
+            $('#finalvalue2').val(selected);
+        });
+    });
+    //open checkbox other
+    function opennewtab() {
+        var selectedCheckbox = document.getElementById("toggle");
+        var showBox = document.getElementById("content");
+        if (selectedCheckbox.checked == true) {
+            showBox.style.display = "block";
+        } else {
+            showBox.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>

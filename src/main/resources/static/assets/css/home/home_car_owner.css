@@ -1,51 +1,39 @@
-.body3 {
+.body3{
     display: flex;
     justify-content: space-between;
     flex-direction: row;
 }
-
-.container2-body {
+.container2-body{
     margin-right: 40px;
     /*margin-bottom: 20px;*/
 }
-
-.container2-body2 {
+.container2-body2{
     text-align: justify;
 }
-
-.list-car {
+.list-car{
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
 }
 
-.container2-header {
+.container2-header{
     padding-top: 40px;
     margin-bottom: 20px;
     font-weight: 600;
 }
-
-.h5 {
+.h5{
     font-weight: 500;
 }
-
-.body-description {
+.body-description{
     margin-bottom: 40px;
     font-weight: 400;
 }
 
-.container1s {
+.container1s{
     margin-left: 40px;
     /*margin-right: 20px;*/
 }
 
-.container1 {
+.container1{
     background-color: #D0D4D4;
-}
-
-::before {
-    color: black;
-    border: 2px solid black;
-    padding: 2px;
-    border-radius: 10%;
 }

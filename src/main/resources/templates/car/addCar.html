@@ -3,33 +3,9 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Car</title>
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500"/>
-    <link rel="stylesheet" href="/assets/boostrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="/assets/css/form-element.css"/>
-    <link rel="stylesheet" href="/assets/css/addCar.css">
-    <link rel="stylesheet" href="../../static/assets/css/font-awesome-pro.css"/>
-    <link rel="stylesheet" href="../../static/assets/css/form-element.css"/>
+    <title>Edit Car</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
           rel="stylesheet">
-    <link rel="stylesheet" href="../../static/assets/boostrap/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="../../static/assets/boostrap/css/animated.css">
-    <link rel="stylesheet" href="../../static/assets/boostrap/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../../static/assets/boostrap/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../../static/assets/boostrap/css/magnific-popup.css">
-    <link rel="stylesheet" href="../../static/assets/boostrap/css/aos.css">
-    <link rel="stylesheet" href="../../static/assets/boostrap/css/ionicons.min.css">
-    <link rel="stylesheet" href="../../static/assets/boostrap/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="../../static/assets/boostrap/css/jquery.timepicker.css">
-    <link rel="stylesheet" href="/assets/boostrap/css/flaticon.css">
-    <link rel="stylesheet" href="/assets/boostrap/css/icomoon.css">
-    <link rel="stylesheet" href="/assets/boostrap/css/style.css">
-    <!-- ICON -->
-
-    <link rel="stylesheet" href="/assets/css/home/home_customer.css">
-    <link rel="stylesheet" href="/assets/css/car/search_car.css">
 
     <!--    ICON-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
@@ -41,489 +17,242 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!--    CSS-->
+    <link rel="stylesheet" href="/assets/css/common/menu.css">
     <link rel="stylesheet" href="/assets/css/car/car_search.css">
-    <link rel="stylesheet" href="/assets/css/fragment/header.css">
-    <link rel="stylesheet" href="/assets/css/fragment/search.css">
     <link rel="stylesheet" href="/assets/css/car/car_item.css">
     <link rel="stylesheet" href="/assets/css/car/car_detail.css">
-    <style>
-        .error {
-            color: red;
-        }
-    </style>
+
+
+    <link rel="stylesheet" href="/assets/css/form-element.css"/>
+    <link rel="stylesheet" href="/assets/css/style.css"/>
+    <link rel="stylesheet" href="/assets/boostrap/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/boostrap/css/animated.css">
+    <link rel="stylesheet" href="/assets/boostrap/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/boostrap/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/boostrap/css/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/boostrap/css/aos.css">
+    <link rel="stylesheet" href="/assets/boostrap/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/boostrap/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/boostrap/css/style.css">
 </head>
 <body>
 <body>
-<div th:insert="~{/fragment/header::menu2(${fullName})}">
+<div th:insert="~{/fragment/header::menu(${user})}">
 </div>
 
 <div style="margin:32px">
     <a th:href="@{/home}">Home</a>
-    <span> > </span>
-    <a th:href="@{/listCar}">My Cars</a>
-    <span> > </span>
-    <span>Add a car</span>
+    <span> > Add Cars</span>
 </div>
-
 <div class="container">
-    <form action="/Add-Car" method="post" class="add-car-form-1" id="regForm" enctype="multipart/form-data">
-        <!-- Circles which indicates the steps of the form: -->
-        <div class="progressbar">
-            <span class="step">Basic</span>
-            <span class="step">Details</span>
-            <span class="step">Pricing</span>
-            <span class="step">Finish</span>
-        </div>
-        <h1>Add a car:</h1>
-        <div class="tab">
-            <div class="text-danger" th:utext="${msg}"></div>
-            <p class="tabinput">
-                <input placeholder="License plate" class="inputplate" oninput="this.className = ''" name="licensePlate">
-            </p>
-            <div class="groupbetween">
-                <div class="selectgroup col-md-6">
-                    <div>
-                        <select oninput="this.className = ''" name="color" class="selectchoice">
-                            <option selected value="">Color</option>
-                            <option value="Black">Black</option>
-                            <option value="Blue">Blue</option>
-                            <option value="Green">Green</option>
-                            <option value="Gray">Gray</option>
-                            <option value="Red">Red</option>
-                            <option value="White">White</option>
-                            <option value="Gold">Gold</option>
-                            <option value="Orange">Orange</option>
-                            <option value="Brown">Brown</option>
-                            <option value="Silver">Silver</option>
-                            <option value="Yellow">Yellow</option>
-                        </select>
-                    </div>
-                    <div>
-                        <select oninput="this.className = ''" name="brand" class="selectchoice">
-                            <option selected value="">Brand name</option>
-                            <option value="Tesla">Tesla</option>
-                            <option value="BMW">BMW</option>
-                            <option value="Ferrari">Ferrari</option>
-                            <option value="Ford">Ford</option>
-                            <option value="Porsche">Porsche</option>
-                            <option value="Honda">Honda</option>
-                            <option value="Lamborghini">Lamborghini</option>
-                            <option value="Toyota">Toyota</option>
-                            <option value="Bentley">Bentley</option>
-                            <option value="Maserati">Maserati</option>
-                            <option value="Audi">Audi</option>
-                            <option value="Subaru">Subaru</option>
-                            <option value="Hyundai">Hyundai</option>
-                            <option value="Mazda">Mazda</option>
-                            <option value="Nissan">Nissan</option>
-                            <option value="Chevrolet">Chevrolet</option>
-                            <option value="Kia">Kia</option>
-                            <option value="Mercedes-Benz">Mercedes-Benz</option>
-                            <option value="Volkswagen">Volkswagen</option>
-                            <option value="Volvo">Volvo</option>
-                            <option value="Mitsubishi">Mitsubishi</option>
-                            <option value="Peugeot">Peugeot</option>
-                            <option value="Mini">Mini</option>
-                            <option value="Land Rover">Land Rover</option>
-                            <option value="Renault">Renault</option>
-                            <option value="Daewoo">Daewoo</option>
-                            <option value="MG">MG</option>
-                            <option value="VinFast">VinFast</option>
-                        </select>
-                    </div>
-                    <div>
-                        <select oninput="this.className = ''" name="model" class="selectchoice">
-                            <option selected value="">Model</option>
-                            <option value="Low">Low</option>
-                            <option value="High">High</option>
-                            <option value="Medium">Medium</option>
-                            <option value="Custom">Custom</option>
-                            <option value="Chicken">Chicken</option>
-                        </select>
-                    </div>
-                    <div>
-                        <select oninput="this.className = ''" name="year" class="selectchoice">
-                            <option selected value="">Production year</option>
-                            <option value="2022">2022</option>
-                            <option value="2019">2019</option>
-                            <option value="2018">2018</option>
-                            <option value="2017">2017</option>
-                            <option value="2016">2016</option>
-                        </select>
-                    </div>
-                    <div>
-                        <select oninput="this.className = ''" name="seat" class="selectchoice">
-                            <option selected value="">No. of seats</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="12">12</option>
-                            <option value="16">16</option>
-                            <option value="24">24</option>
-                            <option value="32">32</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="radiochoice col-md-6">
-                    <div class="form-group">
-                        <input type="radio" oninput="this.className = ''" class="btn-check btn-radio" name="transmission" id="option1"
-                               autocomplete="off" value="Automatic" checked hidden>
-                        <label class="btn btn-radio" for="option1">Automatic</label>
-                        <input type="radio" oninput="this.className = ''" class="btn-check btn-radio" name="transmission" id="option2"
-                               autocomplete="off" value="Manual" hidden>
-                        <label class="btn btn-radio" for="option2">Manual</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="radio" oninput="this.className = ''" class="btn-check btn-radio" name="fuel" id="option3"
-                               autocomplete="off" value="Gasoline" checked hidden>
-                        <label class="btn btn-radio " for="option3">Gasoline</label>
-                        <input type="radio" oninput="this.className = ''" class="btn-check btn-radio" name="fuel" id="option4"
-                               autocomplete="off" value="Diesel" hidden>
-                        <label class="btn btn-radio" for="option4">Diesel</label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group forminputimage d-flex justify-content-evenly">
-                <div class="drop-zone">
-                    <label>Registration paper:</label>
-                    <input type="file" name="pregistration" accept="image/jpeg, image/png" id="target1">
-                    <img alt="" id="thumbnail1">
-                </div>
-                <div class="drop-zone">
-                    <label >Certificate of inspection</label>
-                    <input type="file" name="pinspection" accept="image/jpeg, image/png" id="target2">
-                    <img alt="" id="thumbnail2">
-                </div>
-                <div class="drop-zone">
-                    <label >Insurance</label>
-                    <input type="file" name="pinsuranceUrl" accept="image/jpeg, image/png" id="target3">
-                    <img alt="" id="thumbnail3">
-                </div>
-            </div>
-        </div>
-        <div class="tab">
-            <div class="numberinput">
-                <div class="form-group">
-                    <input placeholder="Mileage" type="number" oninput="this.className = ''" name="mileage">
-                </div>
-                <div class="form-group">
-                    <input placeholder="Fuel consumption (liter/100km)" type="number" name="fuelConsumption" oninput="this.className = ''"/>
-                </div>
-            </div>
-            <div class="form-group">
-                Address
-                <select class="custom-select" oninput=" this.className = ''" name="city" id="cityID">
-                    <option value="" selected="">Select Country</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <select class="custom-select" name="district" id="districtID" oninput="this.className = ''">
-                    <option value="" selected="">Select District</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <select class="custom-select" name="ward" id="wardID" oninput="this.className = ''">
-                    <option value="" selected="">Select Ward</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <input type="text" name="street" oninput="this.className = ''" class="form-text form-control"
-                       placeholder="House number, Street"/>
-            </div>
-            <div class="form-group">
-                Description
-                <textarea name="description" class="form-control" oninput="this.className = ''"
-                          id="exampleFormControlTextarea1" rows="10"
-                          placeholder="Description of your vehicle"></textarea>
-            </div>
-            <div class="form-group">
-                <div class="checkboxgroup1">
-                    Bluetooth
-                    <input value="BLUETOOTH" class="fntchk" type="checkbox" >
-                    GPS
-                    <input value="GPS" class="fntchk"  type="checkbox">
-                    Camera
-                    <input value="CAMERA" class="fntchk"  type="checkbox">
-                </div>
-                <div class="checkboxgroup2">
-                    Sun roof
-                    <input value="SUNROOF" class="fntchk"  type="checkbox" >
-                    Child lock
-                    <input value="CHILDLOCK" class="fntchk"  type="checkbox">
-                    Child seat
-                    <input value="CHILDSEAT" class="fntchk"  type="checkbox">
-                </div>
-                <div class="checkboxgroup3">
-                    DVD
-                    <input value="DVD" class="fntchk"  type="checkbox">
-                    USB
-                    <input value="USB" class="fntchk"  type="checkbox">
-                </div>
-                <input name="addFunction" id="finalvalue" hidden>
-            </div>
-            <div class="form-group">
+    <a href="/listCar" class="btn btn-outline-primary">List Car</a>
+    <form action="" th:object="${addCar}" method="post" class="form-add" id="formAdd">
+        <h3 class="form-add-header">Add a Car</h3>
+        <div class="form-add-container">
+            <div class="form-add-container-item">
+                <label for="brand"><strong>Brand:</strong></label>
                 <div>
-                    <label>Front</label>
-                    <input type="file" name="pimages" accept="image/jpeg, image/png" id="target4">
-                    <img alt="Image show" id="thumbnail4">
+                    <input type="text" th:field="*{brand}" id="brand" name="brand"/>
+                    <div class="alert alert-warning" th:if="${#fields.hasErrors('brand')}" th:errorclass="error" th:errors="*{brand}"></div>
                 </div>
+            </div>
+            <div class="form-add-container-item">
+                <label for="model"><strong>Model:</strong></label>
                 <div>
-                    <label>Left</label>
-                    <input type="file" name="pimages" accept="image/jpeg, image/png" id="target5">
-                    <img alt="Image show" id="thumbnail5">
-                </div>
+                    <input type="text" th:field="*{model}" id="model" name="model" oninput="this.className = ''"/>
+                    <p th:if="${#fields.hasErrors('model')}" th:errorclass="error" th:errors="*{model}"></p></div>
+            </div>
+            <div class="form-add-container-item">
+                <label for="year"><strong>Year:</strong></label>
                 <div>
-                    <label>Right</label>
-                    <input type="file" name="pimages" accept="image/jpeg, image/png" id="target6">
-                    <img alt="Image show" id="thumbnail6">
-                </div>
+                    <input type="number" th:field="*{year}" id="year" name="year" oninput="this.className = ''"/>
+                    <p th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></p></div>
+            </div>
+            <div class="form-add-container-item">
+                <label for="district"><strong>District:</strong></label>
                 <div>
-                    <label>Back</label>
-                    <input type="file" name="pimages" accept="image/jpeg, image/png" id="target7">
-                    <img alt="Image show" id="thumbnail7">
+                    <input type="text" th:field="*{district}" id="district" name="district"
+                           oninput="this.className = ''"/>
+                    <p th:if="${#fields.hasErrors('district')}" th:errors="*{district}"></p></div>
+            </div>
+            <div class="form-add-container-item">
+                <label for="city"><strong>City:</strong></label>
+                <div>
+                    <input type="text" th:field="*{city}" id="city" name="city" oninput="this.className = ''"/>
+                    <p th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></p></div>
+            </div>
+            <div class="form-add-container-item">
+                <label for="price"><strong>Base price:</strong></label>
+                <div>
+                    <input type="number" th:field="*{price}" id="price" name="price" oninput="this.className = ''"/>
+                    VND/Day
+                    <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p></div>
+            </div>
+            <div class="form-add-container-item">
+                <label for="deposit"><strong>Required deposit:</strong></label>
+                <div>
+                    <input type="number" th:field="*{deposit}" id="deposit" name="deposit"
+                           oninput="this.className = ''"/>
+                    <p th:if="${#fields.hasErrors('deposit')}" th:errors="*{deposit}"></p>
                 </div>
             </div>
-        </div>
-        <div class="tab">
-            <div>
-                Set base price for your car:
-                <input type="number" name="price" oninput="this.className = ''"/> VND/Day
-            </div>
-            <div>
-                Required deposit:
-                <input type="number" name="deposit" oninput="this.className = ''"/>
-            </div>
-            <div>
-                Terms of use
-                <input type="checkbox" class="fntchk2" oninput="this.className = ''" value="NOSMOKING">No smoking
-                <input type="checkbox" class="fntchk2" oninput="this.className = ''" value="NOFOODINCAR">No food in car
-                <input type="checkbox" class="fntchk2" oninput="this.className = ''" value="NOPET">No Pet
-                <input name="term" id="finalvalue2">
-                <input type="checkbox" name="" oninput="this.className = ''" value="Other" id="toggle" onclick="opennewtab()">Other
-                <div id="content" class="is-hidden">
-                    <label>Please specify:</label>
-                    <textarea name="termExtra" cols="30" rows="10"
-                              oninput="this.className = ''"></textarea>
+            <div class="form-add-container-item">
+                <label><strong>Status:</strong></label>
+                <div>
+                    <select name="status" th:field="*{status}" class="form-select"
+                            aria-label="Default select example">
+                        <th:block th:each="status: ${carStatus}" th:switch="${status.name()}">
+                            <option th:case="'Available'" th:value="'Available'">Available</option>
+                            <option th:case="'Stopped'" th:value="'Stopped'">Stopped</option>
+                            <option th:case="'Booked'" th:value="'Booked'">Booked</option>
+                        </th:block>
+                    </select>
                 </div>
             </div>
-        </div>
-        <div class="tab">
-            Preview......
-        </div>
-        <div style="overflow:auto;">
-            <div style="float:right;">
-                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+            <div class="form-add-container-item">
+                <input type="submit" class="btn btn-success" value="Save">
+                <input type="reset" class="btn btn-success" value="Reset">
             </div>
         </div>
     </form>
 </div>
+<!--FOOTER BEGIN-->
+<footer class="ftco-footer ftco-bg-dark ftco-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2"><a href="#" class="logo">Car<span>Rental</span></a></h2>
+                    <p><a href="#">Search Cars And Rates</a></p>
+                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                        <li class="ftco-animate">
+                            <a href="#">
+                               <span>
+                                   <i class="fa-brands fa-square-facebook"></i>
+                               </span>
+                            </a></li>
+                        <li class="ftco-animate justify-content-center">
+                            <a href="#">
+                                <span>
+                                    <i class="fa-brands fa-square-twitter"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="ftco-animate justify-content-center">
+                            <a href="#">
+                                <span>
+                                    <i class="fa-brands fa-square-instagram"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4 ml-md-5">
+                    <h2 class="ftco-heading-2">CUSTOMER ACCESS</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="py-2 d-block">Manage My Booking</a></li>
+                        <li><a href="#" class="py-2 d-block">My Wallet</a></li>
+                        <li><a href="#" class="py-2 d-block">My Car</a></li>
+                        <li><a href="#" class="py-2 d-block">Log in</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">JOIN US</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="py-2 d-block">New User Sign Up</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">HAVE A QUESTION?</h2>
+                    <div class="block-23 mb-3">
+                        <ul>
+                            <a href="#">
+                                <i class="fa-solid fa-phone"></i>
+                                <span class="text">369 Duy Tan, Cau Giay, Ha Noi, Viet Nam</span>
+                            </a>
+                            <li>
+                                <a href="#">
+                                    <i class="fa-solid fa-phone"></i>
+                                    <span class="text">+1900 0091</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <span class="text">carrental@support.com</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p>
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script>
+                    All rights reserved
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--FOOTER END-->
 
-<script src="/assets/js/addCar.js"></script>
-<script src="../../static/assets/js/login.js"></script>
-<script src="../../static/assets/js/signup.js"></script>
-<script src="../../static/assets/boostrap/js/jquery.min.js"></script>
-<script src="../../static/assets/boostrap/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="../../static/assets/boostrap/js/popper.min.js"></script>
-<script src="../../static/assets/boostrap/js/bootstrap.min.js"></script>
-<script src="../../static/assets/boostrap/js/jquery.easing.1.3.js"></script>
-<script src="../../static/assets/boostrap/js/jquery.waypoints.min.js"></script>
-<script src="../../static/assets/boostrap/js/jquery.stellar.min.js"></script>
-<script src="../../static/assets/boostrap/js/owl.carousel.min.js"></script>
-<script src="../../static/assets/boostrap/js/jquery.magnific-popup.min.js"></script>
-<script src="../../static/assets/boostrap/js/aos.js"></script>
-<script src="../../static/assets/boostrap/js/jquery.animateNumber.min.js"></script>
-<script src="../../static/assets/boostrap/js/bootstrap-datepicker.js"></script>
-<script src="../../static/assets/boostrap/js/jquery.timepicker.min.js"></script>
-<script src="../../static/assets/boostrap/js/scrollax.min.js"></script>
-<!-- Javascript -->
-<script src="/assets/js/jquery-1.11.1.min.js"></script>
-<script src="/assets/boostrap/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
-        integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#F96D00"/>
+    </svg>
+</div>
+
+<!-- JQUERY -->
+<!--JS-->
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
 <!--JS-->
 <script src="/assets/js/search_car.js"></script>
-<script type="text/javascript">
-    //show image input
-    $(document).ready(function () {
-        $('#target1').change(function () {
-            showImageThumbnail1(this);
-        });
-        $('#target2').change(function () {
-            showImageThumbnail2(this);
-        });
-        $('#target3').change(function () {
-            showImageThumbnail3(this);
-        });
-        $('#target4').change(function () {
-            showImageThumbnail4(this);
-        });
-        $('#target5').change(function () {
-            showImageThumbnail5(this);
-        });
-        $('#target6').change(function () {
-            showImageThumbnail6(this);
-        });
-        $('#target7').change(function () {
-            showImageThumbnail7(this);
-        });
-    });
-    function showImageThumbnail1(fileInput) {
-        file = fileInput.files[0];
-        reader = new FileReader();
-        reader.onload = function (e) {
-            $('#thumbnail1').attr('src', e.target.result).show();
-        };
-        reader.readAsDataURL(file);
-    }
-    function showImageThumbnail2(fileInput) {
-        file = fileInput.files[0];
-        reader = new FileReader();
-        reader.onload = function (e) {
-            $('#thumbnail2').attr('src', e.target.result).show();
-        };
-        reader.readAsDataURL(file);
-    }
-    function showImageThumbnail3(fileInput) {
-        file = fileInput.files[0];
-        reader = new FileReader();
-        reader.onload = function (e) {
-            $('#thumbnail3').attr('src', e.target.result).show();
-        };
-        reader.readAsDataURL(file);
-    }
-    function showImageThumbnail4(fileInput) {
-        file = fileInput.files[0];
-        reader = new FileReader();
-        reader.onload = function (e) {
-            $('#thumbnail4').attr('src', e.target.result).show();
-        };
-        reader.readAsDataURL(file);
-    }
-    function showImageThumbnail5(fileInput) {
-        file = fileInput.files[0];
-        reader = new FileReader();
-        reader.onload = function (e) {
-            $('#thumbnail5').attr('src', e.target.result).show();
-        };
-        reader.readAsDataURL(file);
-    }
-    function showImageThumbnail6(fileInput) {
-        file = fileInput.files[0];
-        reader = new FileReader();
-        reader.onload = function (e) {
-            $('#thumbnail6').attr('src', e.target.result).show();
-        };
-        reader.readAsDataURL(file);
-    }
-    function showImageThumbnail7(fileInput) {
-        file = fileInput.files[0];
-        reader = new FileReader();
-        reader.onload = function (e) {
-            $('#thumbnail7').attr('src', e.target.result).show();
-        };
-        reader.readAsDataURL(file);
-    }
-    //json input car model
-    var brand = document.getElementById("brand");
-    var model = document.getElementById("model");
-    var Parameter0 ={
-        url : "https://raw.githubusercontent.com/FormidableLabs/radon-typeahead/master/demo/car-models.json",
-        method : "GET",
-        responseType: "application/json",
-    };
-    var promises = axios(Parameter0);
-    promises.then(function (result) {
-        renderBrand (result.data);
-    });
-    function renderBrand(data) {
-        for(const x of data){
-            brand.options[brand.options.length] = new Option(x.brand, x.brand);
-        }
-        brand.onchange = function () {
-            model.length = 1;
-            if (this.value != "") {
-                const result = data.filter(n => n.models === this.value);
-                for (const k of result[0].Models) {
-                    model.options[model.options.length] = new Option(k.model, k.model);
-                }
-            }
-        };
-    }
-    //json input location
-    var cities = document.getElementById("cityID");
-    var districts = document.getElementById("districtID");
-    var wards = document.getElementById("wardID");
-    var Parameter = {
-        url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
-        method: "GET",
-        responseType: "application/json",
-    };
-    var promise = axios(Parameter);
-    promise.then(function (result) {
-        renderCity(result.data);
-    });
-    function renderCity(data) {
-        for (const x of data) {
-            cities.options[cities.options.length] = new Option(x.Name, x.Name);
-        }
-        cities.onchange = function () {
-            districts.length = 1;
-            wards.length = 1;
-            if (this.value != "") {
-                const result = data.filter(n => n.Name === this.value);
-                for (const k of result[0].Districts) {
-                    districts.options[districts.options.length] = new Option(k.Name, k.Name);
-                }
-            }
-        };
-        districts.onchange = function () {
-            wards.length = 1;
-            const dataCity = data.filter((n) => n.Name === cities.value);
-            if (this.value != "") {
-                const dataWards = dataCity[0].Districts.filter(n => n.Name === this.value)[0].Wards;
-                for (const w of dataWards) {
-                    wards.options[wards.options.length] = new Option(w.Name, w.Name);
-                }
-            }
-        };
-    }
-    //save value checkbox
-    $(document).ready(function () {
-        $('.fntchk').click(function () {
-            var selected = $('.fntchk:checked').map(function () {
-                return $(this).attr('value');
-            }).get().join(',');
-            $('#finalvalue').val(selected);
-        });
-    });
-    $(document).ready(function () {
-        $('.fntchk2').click(function () {
-            var selected = $('.fntchk2:checked').map(function () {
-                return $(this).attr('value');
-            }).get().join(',');
-            $('#finalvalue2').val(selected);
-        });
-    });
-    //open checkbox other
-    function opennewtab(){
-        var selectedCheckbox = document.getElementById("toggle");
-        var showBox = document.getElementById("content");
-        if(selectedCheckbox.checked == true){
-            showBox.style.display = "block";
-        }
-        else{
-            showBox.style.display = "none";
-        }
-    }
-</script>
+<!-- Javascript -->
+<script src="/assets/boostrap/js/jquery.min.js"></script>
+<script src="/assets/boostrap/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="/assets/boostrap/js/popper.min.js"></script>
+<script src="/assets/boostrap/js/bootstrap.min.js"></script>
+<script src="/assets/boostrap/js/jquery.easing.1.3.js"></script>
+<script src="/assets/boostrap/js/jquery.waypoints.min.js"></script>
+<script src="/assets/boostrap/js/jquery.stellar.min.js"></script>
+<script src="/assets/boostrap/js/owl.carousel.min.js"></script>
+<script src="/assets/boostrap/js/jquery.magnific-popup.min.js"></script>
+<script src="/assets/boostrap/js/aos.js"></script>
+<script src="/assets/boostrap/js/jquery.animateNumber.min.js"></script>
+<script src="/assets/boostrap/js/bootstrap-datepicker.js"></script>
+<script src="/assets/boostrap/js/jquery.timepicker.min.js"></script>
+<script src="/assets/boostrap/js/scrollax.min.js"></script>
+<script src="/assets/boostrap/js/main.js"></script>
+<script src="/assets/js/jquery-1.11.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
+        integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/assets/js/login.js"></script>
+<script src="/assets/js/signup.js"></script>
+
 </body>
 </html>
